@@ -164,26 +164,41 @@
                     <div>
                         <input type="checkbox" id="age" name="age">
                         <label for="age">Age</label>
+                        <select style="display:none">
+                            <option value='18+' selected>18+</option>
+                            <option value='18-25'>18-25</option>
+                            <option value='26-35'>26-35</option>
+                            <option value='36-45'>36-45</option>
+                            <option value='46-55'>46-55</option>
+                            <option value='other'>Other</option>
+                        </select>
+                        <input type="text" class="other-option" placeholder="Other range" style="display:none">
                     </div>
                     <div>
                         <input type="checkbox" id="gender" name="gender">
-                        <label for="gender">Gender</label>
+                        <label for="gender">Sex/Gender</label>
+                        <textarea placeholder="Further Description" style="display:none"></textarea>
                     </div>
                     <div>
                         <input type="checkbox" id="profession" name="profession">
                         <label for="profesion">Profession</label>
+                        <input type="text" class="other-option" placeholder="Further Description" style="display:none">
                     </div>
                     <div>
                         <input type="checkbox" id="location" name="location">
                         <label for="location">Location</label>
+                        <input type="text" class="other-option" placeholder="Further Description" style="display:none">
                     </div>
                     <div>
                         <input type="checkbox" id="prior-knowledge" name="prior-knowledge">
                         <label for="prior-knowledge">Prior Knowledge</label>
+                        <input type="text" class="other-option" placeholder="Further Description" style="display:none">
                     </div>
                     <div class='field'>
-                        <label>Other value</label>
-                        <input type='text'>
+                        <div>
+                            <input type='text' placeholder="Other option">
+                            <button class="add-checkbox-option" type="button">Add Option</button>
+                        </div>
                     </div>
                 </div>
                 <h4>Conflicts of Interest</h4>

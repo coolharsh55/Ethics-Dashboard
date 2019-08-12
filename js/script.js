@@ -24,8 +24,8 @@ $( document ).ready(function() {
     });
 
 
-    $(".delete").click(function(){
-      console.log("gfds");
+    $("body").on("click",".delete",function(){
+      $(this).parent().remove();
     });
 
     $('select').on('click', function() {
@@ -34,7 +34,7 @@ $( document ).ready(function() {
       }
     });
 
-    $("input[type='checkbox'").on('change', function() {
+    $("body").on('change', "input[type='checkbox']" ,function() {
       if($(this).attr("name")=="age"){
         $(this).parent().find("select").slideToggle();
       }else if($(this).attr("name")=="gender"){
@@ -42,12 +42,19 @@ $( document ).ready(function() {
       }else{
         $(this).parent().find("input[type='text']").slideToggle();
       }
+
     });
 
 
     $(".add-checkbox-option").on('click', function(){
       if($(this).parent().find("input").val()!=""){
-        alert($(this).parent().parent().parent());
+        var value = $(this).parent().find("input").val();
+        var div_tag = $("<div />");
+        var input_checkbox = $("<input>", {type:"checkbox", id:value, name:value});
+        var label_tag = $("<label />",{'for':value,text:value});
+        var input_text = $("<input>", {type:"text",'class':"other-option",'placeholder':"Further Description",'style':"display:none"});
+        div_tag.append(input_checkbox,label_tag,input_text);
+        $(this).parent().parent().parent().append(div_tag);
       }
     });
 
