@@ -1,0 +1,155 @@
+*{
+    padding:0;
+    margin:0;
+    border: 0;
+}
+$primary-shade:#0099FF;
+$unselected-shade:#a1deff;
+$header-colour:white;
+$body-colour:#e9e9e9;
+$form-background-colour:white;
+$text-font: 'Lato', sans-serif;
+$header-font: 'Oswald', sans-serif;
+$icon-colour:white;
+$input-border-colour:#bdbdbd;
+$error-colour:rgb(241, 16, 16);
+$button-height:30px;
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+body{
+    width:100%;
+    background-color: $body-colour;
+    #formV2{
+        width:60%;
+        margin: 0 auto;
+        padding:20px;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+        font-family: $text-font;
+        h1, h2{
+            margin-bottom:10px;
+        }
+
+        h3,h4,h5,h6{
+            text-align: left;
+        }
+
+        textarea{
+            width:95%;
+            height:200px;
+            margin:10px 5px;
+            border:1px solid rgb(194, 194, 194);
+            border-radius: 3px;
+            padding:5px;
+        }
+
+        input[type='text']{
+            border:none;
+            border-bottom: 1px solid  rgb(194, 194, 194);
+            width:95%;
+            padding:3px;
+            margin:10px 5px;
+        }
+
+        .field{
+            width:30%;
+            margin:5px;
+            input, select{
+                width: 90%;
+                height:30px;
+                margin: 0 auto;
+                border: 1px solid grey;
+                padding:3px;
+            }
+
+            .other-option{
+                margin:5px 0;
+            }
+        }
+        .argument-area{
+            display: flex;
+            flex-flow: wrap;
+            padding:5px;
+        }
+
+        .checkBoxArea{
+            width:90%;
+            margin: 0 auto;
+            padding:5px;
+            display: flex;
+            flex-flow: wrap;
+            justify-content: space-evenly;
+            div{
+                width:20%;
+
+                select{
+                    width:90%;
+                    height:30px;
+                    margin:10px 5px;
+                    border:1px solid rgb(194, 194, 194);
+                    padding:3px;
+                }
+                input[type="text"]{
+                    width: 90%;
+                    height:30px;
+                    margin:10px 5px;
+                    border:1px solid rgb(194, 194, 194);
+                    padding:3px;
+                }
+            }
+            .field{
+                width:90%;
+                margin: 10px auto;
+
+                div{
+                    width:100%;
+                    display: flex;
+
+                    button{
+                        width:15%;
+                        padding:3px;
+                        text-align: center;
+                        background-color: rgb(101, 101, 250);
+                        color: white;
+                        cursor: pointer;
+                        border-radius: 3px;
+                    }
+                }
+            }
+        }
+
+        .add-tag-button{
+            width:15%;
+            padding:5px;
+            text-align: center;
+            background-color: rgb(101, 101, 250);
+            color: white;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .multiple-input-text-tags{
+            margin: 5px 0;
+            padding: 5px;
+            background-color: #ececec;
+            border-radius: 3px;
+            display: flex;
+            flex-flow: wrap;
+            justify-content: space-around;
+            .multiple-input-text-tag{
+                background-color: #6565fa;
+                color: white;
+                border-radius: 3px;
+                margin:5px 3px;
+                a{
+                    background-color: #6565fa;
+                    color:white;
+                }
+            }
+        }
+    }
+}
+

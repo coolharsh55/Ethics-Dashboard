@@ -1,0 +1,38 @@
+{
+		"0":{
+			"input":"single-input"
+		},
+		"1":{
+			"input":"multiple-input",
+			"arguments":{
+				"0":{
+					"input":"single-input",
+					"type":"text",
+					"title":"name"
+				},
+				"1":{
+					"input":"single-input",
+					"type":"email",
+					"title":"email"
+				},
+				"2":{
+					"input":"single-input",
+					"type":"text",
+					"title":"affiliation"
+				},
+				"3":{
+					"input":"single-input",
+					"type":"number",
+					"title":"Contact Number"
+				},
+				"4":{
+					"input":"single-selector",
+					"options":["Undergraduate","Postgraduate","Phd Researcher","PostDoctoral researcher", "Lecturer/Professor"],
+					"title":"Academic Position"
+				}
+			}
+		},
+		"2":{
+			"form-complete":true
+		}
+}
