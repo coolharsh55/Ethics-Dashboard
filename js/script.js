@@ -54,7 +54,16 @@ $( document ).ready(function() {
         var label_tag = $("<label />",{'for':value,text:value});
         var input_text = $("<input>", {type:"text",'class':"other-option",'placeholder':"Further Description",'style':"display:none"});
         div_tag.append(input_checkbox,label_tag,input_text);
-        $(this).parent().parent().parent().append(div_tag);
+        $(this).parent().parent().parent().find(".checkBoxArea-div").append(div_tag);
+      }
+    });
+
+
+    $(".add-select-option").on("click", function(){
+      if($(this).parent().find("input").val()!=""){
+        var value = $(this).parent().find("input").val();
+        var option_tag = $("<option />", {"text":value, "value":value});
+        $(this).parent().parent().parent().find("select").append(option_tag);
       }
     });
 

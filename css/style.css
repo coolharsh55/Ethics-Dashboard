@@ -77,6 +77,10 @@ body #formV2 .checkBoxArea {
   width: 90%;
   margin: 0 auto;
   padding: 5px;
+}
+
+body #formV2 .checkBoxArea .checkBoxArea-div {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -120,6 +124,34 @@ body #formV2 .checkBoxArea .field div {
 }
 
 body #formV2 .checkBoxArea .field div button {
+  width: 15%;
+  padding: 3px;
+  text-align: center;
+  background-color: #6565fa;
+  color: white;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+body #formV2 .multiple-dropdown {
+  width: 90%;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+body #formV2 .multiple-dropdown .field {
+  width: 90%;
+  margin: 10px auto;
+}
+
+body #formV2 .multiple-dropdown .field div {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body #formV2 .multiple-dropdown .field div button {
   width: 15%;
   padding: 3px;
   text-align: center;
