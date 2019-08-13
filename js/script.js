@@ -64,6 +64,9 @@ $( document ).ready(function() {
         var value = $(this).parent().find("input").val();
         var option_tag = $("<option />", {"text":value, "value":value});
         $(this).parent().parent().parent().find("select").append(option_tag);
+        $(this).parent().parent().parent().find(".selection").append(
+          $("<a/>",{class:"ui label transition visible",'data-value':"hair-colour",style:"display: inline-block !important;", text:value}).append(
+          $("<i />",{class:"delete icon"})));
       }
     });
 
