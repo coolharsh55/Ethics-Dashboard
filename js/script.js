@@ -14,15 +14,33 @@ $( document ).ready(function() {
 
     $(".add-tag-button").on("click", function(){
       var input_elements = $(this).parent().find(".argument-area").children();
+      var name = getName(input_elements);
       var tagArea = $(this).parent().find(".multiple-input-text-tags");
       var otherInfo = gatherInfo(input_elements);
       $(this).parent().find(".multiple-input-text-tags").css("display","flex");
-      tagArea.append($("<div/>",{'class':'multiple-input-text-tag', 'data-position':'top center','title':  otherInfo}).append(
-        $("<a/>", {'class':"ui label transition visible", text:$(input_elements[0]).find("input").val()}),
-        $("<i/>", {'class':"delete icon remove-icon"})
-      ));
+      tagArea.append(
+        $("<div/>",{'class':'multiple-input-text-tag'}).append(
+          $("<a/>", {'class':"ui label transition visible data-button", text:name}),
+          $("<div />", {class:"ui popup top left transition hidden"}).append(
+            $("<div />",{class:"ui flex"}).append(otherInfo)
+          ),
+          $("<i/>", {'class':"delete icon remove-icon", title:"remove"})
+        )
+      );
     });
 
+    $("body").on('click', ".edit-button", function(){
+      console.log($(this).parent().children());
+      // labels = [];
+      // values = [];
+      // for(var i of $(this).parent().find(".popup").children().children()){
+      //   labels.push($(i).find("h4")[0].innerHTML);
+      //   values.push($(i).find("p")[0].innerHTML);
+      // }
+
+      // console.log($(this).parent().parent().parent().find(".argument-area").children());
+      // console.log(labels,values);
+    });
 
     $("body").on("click",".delete",function(){
       $(this).parent().remove();
@@ -70,20 +88,55 @@ $( document ).ready(function() {
       }
     });
 
-});
+    $("body").on("click", ".data-button", function(){
+      $(this).popup({
+        on: 'hover'
+      });
+    });
 
+});
+function getName(input_elements){
+  return $(input_elements[0]).find("input").val();
+}
 function gatherInfo(input_elements){
-  var temp = "";
+  var temp = [];
   for(var i of input_elements){
-    temp += " "+$(i).find("label").text()+":";
-    if($(i).find("input").val() && $(i).find("select").val()=="other"){
-      temp+=" " + $(i).find("input").val();
+    var title = $(i).find("label").text();
+    var value;
+    if($(i).find("input").val()!=""){
+      value = $(i).find("input").val();
+      temp.push(
+        $("<div />", {class:"column"}).append(
+          $("<h4 />", {text:title}),
+          $("<input />", {'value':value})
+        )
+      );
+      $(i).find("input").val("");
+    }else if($(i).find("select").val()=="other"){
+      value = $(i).find("input").val();
+      temp.push(
+        $("<div />", {class:"column"}).append(
+          $("<h4 />", {text:title}),
+          $("<input />", {'value':value})
+        )
+      );
+      $(i).find("input").val("");
     }else{
-      if($(i).find("select").val()){
-        temp+=" " +$(i).find("select").val();
-      }
+      value = $(i).find("select").val();
+      temp.push(
+        $("<div />", {class:"column"}).append(
+          $("<h4 />", {text:title}),
+          $("<input />", {'value':value})
+        )
+      );
+      $(i).find("select").val("UCD");
     }
   }
+
+  // temp.push(
+  //   $("<button />", {class:"ui button edit-button",type:"button", text:"edit"})
+  // );
+  
   return temp;
 }
 

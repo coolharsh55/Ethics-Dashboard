@@ -176,8 +176,15 @@ body{
                 border-radius: 3px;
                 margin:5px 3px;
                 a{
-                    background-color: #6565fa;
-                    color:white;
+                    background-color: #43439b3b;
+                    color: white;
+                    margin-right: 8px;
+                    border-radius: 3px 0 0 3px;
+                }
+                i{
+                    margin-right: 5px;
+                    font-weight: 100;
+                    cursor: pointer;
                 }
             }
         }
