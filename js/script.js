@@ -14,32 +14,27 @@ $( document ).ready(function() {
 
     $(".add-tag-button").on("click", function(){
       var input_elements = $(this).parent().find(".argument-area").children();
-      var name = getName(input_elements);
-      var tagArea = $(this).parent().find(".multiple-input-text-tags");
-      var otherInfo = gatherInfo(input_elements);
-      $(this).parent().find(".multiple-input-text-tags").css("display","flex");
-      tagArea.append(
-        $("<div/>",{'class':'multiple-input-text-tag'}).append(
-          $("<a/>", {'class':"ui label transition visible data-button", text:name}),
-          $("<div />", {class:"ui popup top left transition hidden"}).append(
-            $("<div />",{class:"ui flex"}).append(otherInfo)
-          ),
-          $("<i/>", {'class':"delete icon remove-icon", title:"remove"})
-        )
-      );
-    });
-
-    $("body").on('click', ".edit-button", function(){
-      console.log($(this).parent().children());
-      // labels = [];
-      // values = [];
-      // for(var i of $(this).parent().find(".popup").children().children()){
-      //   labels.push($(i).find("h4")[0].innerHTML);
-      //   values.push($(i).find("p")[0].innerHTML);
-      // }
-
-      // console.log($(this).parent().parent().parent().find(".argument-area").children());
-      // console.log(labels,values);
+      if(checkElements(input_elements)){
+        var name = getName(input_elements);
+        var tagArea = $(this).parent().find(".multiple-input-text-tags");
+        var otherInfo = gatherInfo(input_elements);
+        $(this).parent().find(".multiple-input-text-tags").css("display","flex");
+        tagArea.append(
+          $("<div/>",{'class':'multiple-input-text-tag'}).append(
+            $("<a/>", {'class':"ui label transition visible data-button", text:name}),
+            $("<div />", {class:"ui popup top left transition hidden"}).append(
+              $("<div />",{class:"ui flex"}).append(otherInfo)
+            ),
+            $("<i/>", {'class':"delete icon remove-icon", title:"remove"})
+          )
+        );
+        $(this).parent().find(".errorMessage").css("display", "none");
+          
+      }else{
+        if($(this).parent().find(".errorMessage").css("display") != "block"){
+          $(this).parent().find(".errorMessage").slideToggle();
+        }
+      }
     });
 
     $("body").on("click",".delete",function(){
@@ -95,6 +90,52 @@ $( document ).ready(function() {
     });
 
 });
+
+function checkElements(input_elements){
+  var inputOkay = [];
+  var elementsArr = [];
+  for(var i of input_elements){
+    var arr = [...$(i)[0].children];
+    var input_found = false;
+    var select_found = false;
+    var selectObj, inputObj;
+    for(var i of arr.values()){
+      if($(i)[0].tagName == "INPUT"){
+        input_found = true;
+        inputObj = $(i);
+      }if($(i)[0].tagName == "SELECT"){
+        select_found = true;
+        selectObj = $(i);
+      }
+      elementsArr.push(determineOkayInput(input_found, select_found, inputObj, selectObj));
+    }
+    
+    inputOkay.push(arrayBoolean(elementsArr));
+    elementsArr = [];
+  }
+  
+  return arrayBoolean(inputOkay);
+}
+function arrayBoolean(arr){
+  var bool = arr[0];
+  for(var i=1;i<arr.length;i++){
+    bool &= arr[i];
+  }
+  return bool;
+}
+function determineOkayInput(input_found, select_found, inputObj, selectObj){
+  if(input_found && select_found){
+    if(selectObj[0].value == "other"){
+      return inputObj[0].value != "" ? true : false;
+    }else{
+      return true;
+    }
+  }else if(input_found){
+    return inputObj[0].value != "" ? true : false;
+  }else{
+    return true;
+  }  
+}
 function getName(input_elements){
   return $(input_elements[0]).find("input").val();
 }

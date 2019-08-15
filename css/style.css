@@ -161,6 +161,20 @@ body #formV2 .multiple-dropdown .field div button {
   border-radius: 3px;
 }
 
+body #formV2 .errorMessage {
+  border: 1px solid #f11010;
+  width: 20%;
+  text-align: center;
+  padding: 3px;
+  border-radius: 3px;
+  margin-left: 25px;
+}
+
+body #formV2 .errorMessage h5 {
+  color: #f11010;
+  font-weight: 100;
+}
+
 body #formV2 .add-tag-button {
   width: 15%;
   padding: 5px;
