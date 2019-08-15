@@ -37,6 +37,16 @@ body{
             text-align: left;
         }
 
+        .column{
+            input{
+                background-color: #e0e0e0;
+                height: 15px;
+                padding: 5px;
+            }
+            h4{
+                margin-bottom: 5px;
+            }
+        }
         textarea{
             width:95%;
             height:200px;
