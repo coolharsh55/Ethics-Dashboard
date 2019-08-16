@@ -96,6 +96,20 @@ body{
                 display: flex;
                 flex-flow: wrap;
                 justify-content: space-evenly;
+
+                .age-range{
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    width: 100%;
+
+                    input{
+                        width:40%;
+                        height:30px;
+                        border:1px solid rgb(194, 194, 194);
+                        padding:3px;
+                    }
+                }
             }
             div{
                 width:20%;

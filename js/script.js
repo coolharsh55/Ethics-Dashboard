@@ -15,7 +15,7 @@ $( document ).ready(function() {
     $(".add-tag-button").on("click", function(){
       var input_elements = $(this).parent().find(".argument-area").children();
       if(checkElements(input_elements)){
-        var name = getName(input_elements);
+        var name = $(input_elements[0]).find("input").val()
         var tagArea = $(this).parent().find(".multiple-input-text-tags");
         var otherInfo = gatherInfo(input_elements);
         $(this).parent().find(".multiple-input-text-tags").css("display","flex");
@@ -100,10 +100,11 @@ function checkElements(input_elements){
     var select_found = false;
     var selectObj, inputObj;
     for(var i of arr.values()){
-      if($(i)[0].tagName == "INPUT"){
+      if($(i)[0].tagName == "INPUT" && $(i)[0].type != "checkbox"){
         input_found = true;
         inputObj = $(i);
-      }if($(i)[0].tagName == "SELECT"){
+      }
+      if($(i)[0].tagName == "SELECT"){
         select_found = true;
         selectObj = $(i);
       }
@@ -116,6 +117,7 @@ function checkElements(input_elements){
   
   return arrayBoolean(inputOkay);
 }
+
 function arrayBoolean(arr){
   var bool = arr[0];
   for(var i=1;i<arr.length;i++){
@@ -123,6 +125,7 @@ function arrayBoolean(arr){
   }
   return bool;
 }
+
 function determineOkayInput(input_found, select_found, inputObj, selectObj){
   if(input_found && select_found){
     if(selectObj[0].value == "other"){
@@ -136,47 +139,60 @@ function determineOkayInput(input_found, select_found, inputObj, selectObj){
     return true;
   }  
 }
-function getName(input_elements){
-  return $(input_elements[0]).find("input").val();
-}
+
 function gatherInfo(input_elements){
   var temp = [];
   for(var i of input_elements){
     var title = $(i).find("label").text();
     var value;
-    if($(i).find("input").val()!=""){
-      value = $(i).find("input").val();
-      temp.push(
-        $("<div />", {class:"column"}).append(
-          $("<h4 />", {text:title}),
-          $("<input />", {'value':value})
-        )
-      );
-      $(i).find("input").val("");
-    }else if($(i).find("select").val()=="other"){
-      value = $(i).find("input").val();
-      temp.push(
-        $("<div />", {class:"column"}).append(
-          $("<h4 />", {text:title}),
-          $("<input />", {'value':value})
-        )
-      );
-      $(i).find("input").val("");
+    if($(i).find("input")[0].type=="checkbox"){
+      if($(i).find("input")[0].checked==true){
+        temp.push(
+          $("<div />", {class:"column"}).append(
+            $("<h4 />", {text:title}),
+            $("<input />", {'value':"Yes"})
+          )
+        );
+      }else{
+        temp.push(
+          $("<div />", {class:"column"}).append(
+            $("<h4 />", {text:title}),
+            $("<input />", {'value':"No"})
+          )
+        );
+      }
     }else{
-      value = $(i).find("select").val();
-      temp.push(
-        $("<div />", {class:"column"}).append(
-          $("<h4 />", {text:title}),
-          $("<input />", {'value':value})
-        )
-      );
-      $(i).find("select").val("UCD");
+      if($(i).find("input").val()!=""){
+        value = $(i).find("input").val();
+        temp.push(
+          $("<div />", {class:"column"}).append(
+            $("<h4 />", {text:title}),
+            $("<input />", {'value':value})
+          )
+        );
+        $(i).find("input").val("");
+      }else if($(i).find("select").val()=="other"){
+        value = $(i).find("input").val();
+        temp.push(
+          $("<div />", {class:"column"}).append(
+            $("<h4 />", {text:title}),
+            $("<input />", {'value':value})
+          )
+        );
+        $(i).find("input").val("");
+      }else{
+        value = $(i).find("select").val();
+        temp.push(
+          $("<div />", {class:"column"}).append(
+            $("<h4 />", {text:title}),
+            $("<input />", {'value':value})
+          )
+        );
+        
+      }
     }
+    
   }
-
-  // temp.push(
-  //   $("<button />", {class:"ui button edit-button",type:"button", text:"edit"})
-  // );
   
   return temp;
 }
