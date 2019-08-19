@@ -282,40 +282,53 @@
                     <fieldset>
                         <div class='field'>
                             <div class='ui radio checkbox'>
-                            <input type='radio' name='choice1' checked='' tabindex='0' class='hidden'>
+                            <input type='radio' name='choice1' tabindex='0' class='hidden' data-area="part-obs-area">
                             <label>Yes</label>
                             </div>
                         </div>
                         <div class='field'>
                             <div class='ui radio checkbox'>
-                            <input type='radio' name='choice1' tabindex='0' class='hidden'>
+                            <input type='radio' name='choice1' tabindex='0' checked='' class='hidden'  data-area="part-obs-area">
                             <label>No</label>
                             </div>
                         </div>
                     </fieldset>
+                </div>
+                <div class="part-obs-area" style="display: none">
+                    <h4>obtain explicit consent for observing</h4>
+                    <div>
+                        <input type="checkbox" id="part-obs-area-agreement" name="part-obs-area-agreement">
+                        <label for="part-obs-area-agreement">Agree</label>
+                    </div>
                 </div>
                 <h4>Will Participants be recorder?</h4>
                 <div class='inline fields'>
                     <fieldset>
                         <div class='field'>
                             <div class='ui radio checkbox'>
-                                <input type='radio' name='choice' checked='' tabindex='0' class='hidden'>
-                                <label>Yes, the recording will NOT be published</label>
+                                <input type='radio' name='choice' tabindex='0' class='hidden' data-area="part-rec-area">
+                                <label>Yes</label>
                             </div>
                         </div>
                         <div class='field'>
                             <div class='ui radio checkbox'>
-                                <input type='radio' name='choice' tabindex='0' class='hidden'>
-                                <label>Yes, and the recording will be published</label>
-                            </div>
-                        </div>
-                        <div class='field'>
-                            <div class='ui radio checkbox'>
-                                <input type='radio' name='choice' tabindex='0' class='hidden'>
+                                <input type='radio' name='choice' checked='' tabindex='0' class='hidden' data-area="part-rec-area">
                                 <label>No</label>
                             </div>
                         </div>
                     </fieldset>
+                </div>
+                <div class="part-rec-area" style="display: none">
+                    <h4>obtain explicit consent for recording</h4>
+                    <div>
+                        <input type="checkbox" id="part-rec-area-agreement" name="part-rec-area-agreement">
+                        <label for="part-rec-area-agreement">Agree</label>
+                    </div>
+                    <h4>if planing to use in publication, obtain explicit consent for the publication</h4>
+                    <div>
+                        <input type="checkbox" id="part-rec-area-agreement" name="part-rec-area-agreement">
+                        <label for="part-rec-area-agreement">Agree</label>
+                    </div>
                 </div>
                 <h1>Questionnaires</h1>
                 <h4>Do you use Questionnaires?</h4>
@@ -323,18 +336,89 @@
                     <fieldset>
                         <div class='field'>
                             <div class='ui radio checkbox'>
-                                <input type='radio' name='choice2' checked='' tabindex='0' class='hidden'>
+                                <input type='radio' name='choice2' tabindex='0' class='hidden' data-toggle="questionnaire-question" data-area="checklist-area">
                                 <label>Yes</label>
                             </div>
                         </div>
                         <div class='field'>
                             <div class='ui radio checkbox'>
-                                <input type='radio' name='choice2' tabindex='0' class='hidden'>
+                                <input type='radio'name='choice2' tabindex='0' class='hidden' checked="" data-toggle="questionnaire-question" data-area="checklist-area">
                                 <label>No</label>
                             </div>
                         </div>
                     </fieldset>
                 </div>
+                <div class="checklist-area" style="display: none">
+                    <h4>Specify participants can omit questions or not answer any question. Each question must be optional.</h4>
+                    <div>
+                        <input type="checkbox" id="question-agreement" name="question-agreement">
+                        <label for="question-agreement">Agree</label>
+                    </div>
+                    <h4>The participant must have the option to ‘not submit, exit without submitting’ at the final submission point on your questionnaire.</h4>
+                    <div>
+                        <input type="checkbox" id="final-question-agreement" name="final-question-agreement">
+                        <label for="final-question-agreement">Agree</label>
+                    </div>
+                    <h4>Is the questionnaire online?</h4>
+                    <div class='inline fields'>
+                        <fieldset>
+                            <div class='field'>
+                                <div class='ui radio checkbox'>
+                                    <input type='radio' name='oqa' tabindex='0' class='hidden' data-toggle="questionnaire-online" data-area="online-questionnaire-area">
+                                    <label>Yes</label>
+                                </div>
+                            </div>
+                            <div class='field'>
+                                <div class='ui radio checkbox'>
+                                    <input type='radio' name='oqa' tabindex='0' class='hidden' checked='' data-toggle="questionnaire-online" data-area="online-questionnaire-area">
+                                    <label>No</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="online-questionnaire-area" style="display: none">
+                        <h4>Questionnaires URL</h4>
+                        <div class='field'>
+                            <input type='text'>
+                        </div>
+                        <h4>First page of your questionnaire must repeat the content of the information sheet followed by consent form. If the participant does not agree to the consent, they must automatically be exited from the questionnaire.</h4>
+                        <div>
+                            <input type="checkbox" id="final-question-agreement" name="final-question-agreement">
+                            <label for="final-question-agreement">Agree</label>
+                        </div>
+                    </div>
+                    <h4>Is the questionnaire paper based?</h4>
+                    <div class='inline fields'>
+                        <fieldset>
+                            <div class='field'>
+                                <div class='ui radio checkbox'>
+                                    <input type='radio' name='pqa' tabindex='0' class='hidden' data-toggle="questionnaire-paper" data-area="paper-questionnaire-area">
+                                    <label>Yes</label>
+                                </div>
+                            </div>
+                            <div class='field'>
+                                <div class='ui radio checkbox'>
+                                    <input type='radio' name='pqa' tabindex='0' class='hidden' data-toggle="questionnaire-paper" checked='' data-area="paper-questionnaire-area">
+                                    <label>No</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="paper-questionnaire-area" style="display: none">
+                        <h4>The following opt-out clause on the top of each page of the questionnaire: “Each question is optional. Feel free to omit a response to any question; however the researcher would be grateful if all questions are responded to.”</h4>
+                        <div>
+                            <input type="checkbox" id="final-question-agreement" name="final-question-agreement">
+                            <label for="final-question-agreement">Agree</label>
+                        </div>
+                    </div>
+
+                    <h4>Warn the participant against naming third parties: “Please do not name third parties in any open text field of the questionnaire. Any such replies will be anonymised.”</h4>
+                    <div>
+                        <input type="checkbox" id="final-question-agreement" name="final-question-agreement">
+                        <label for="final-question-agreement">Agree</label>
+                    </div>
+                </div>
+
                 <h4>What type of questionnaire do you use?</h4>
                 <div class="multiple-dropdown">
                     <div class='field'>
@@ -584,17 +668,24 @@
                     <fieldset>
                         <div class='field'>
                             <div class='ui radio checkbox'>
-                                <input type='radio' name='choice4' checked='' tabindex='0' class='hidden'>
+                                <input type='radio' name='choice4' tabindex='0' class='hidden' data-area="screen-monitors-area">
                                 <label>Yes</label>
                             </div>
                         </div>
                         <div class='field'>
                             <div class='ui radio checkbox'>
-                                <input type='radio' name='choice4' tabindex='0' class='hidden'>
+                                <input type='radio' name='choice4' checked='' tabindex='0' class='hidden' data-area="screen-monitors-area">
                                 <label>No</label>
                             </div>
                         </div>
                     </fieldset>
+                </div>
+                <div class="screen-monitors-area" style="display: none">
+                    <h4>Verify the participant or anyone in their family does not have a history of epilepsy</h4>
+                    <div>
+                        <input type="checkbox" id="part-rec-area-agreement" name="part-rec-area-agreement">
+                        <label for="part-rec-area-agreement">Agree</label>
+                    </div>
                 </div>
 
             </form>

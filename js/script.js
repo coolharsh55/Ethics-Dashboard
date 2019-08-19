@@ -89,7 +89,28 @@ $( document ).ready(function() {
       });
     });
 
+    $("body").on("change", "input[type='radio']",function(){
+      console.log($(this).attr("data-area"));
+      displayElements($(this),$(this).attr("data-area"));
+    });
+
+    // $("body").on("change", ".questionnaire-online",function(){
+    //   if($(this).parent().find("label")[0].innerText == "Yes"){
+    //     $(".online-questionnaire-area").slideToggle();
+    //   }else if($(this).parent().find("label")[0].innerText == "No" && $(".checklist-area").css("display")=="block"){
+    //     $(".online-questionnaire-area").slideToggle();
+    //   }
+    // });
+
 });
+
+function displayElements(element, area_to_display){
+  if($(element).parent().find("label")[0].innerText == "Yes"){
+    $("."+area_to_display).slideToggle();
+  }else if($(element).parent().find("label")[0].innerText == "No" && $("."+area_to_display).css("display")=="block"){
+    $("."+area_to_display).slideToggle();
+  }
+}
 
 function checkElements(input_elements){
   var inputOkay = [];
