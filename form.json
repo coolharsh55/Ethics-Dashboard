@@ -1,38 +1,29 @@
 {
-		"0":{
-			"input":"single-input"
-		},
-		"1":{
-			"input":"multiple-input",
-			"arguments":{
-				"0":{
-					"input":"single-input",
-					"type":"text",
-					"title":"name"
-				},
-				"1":{
-					"input":"single-input",
-					"type":"email",
-					"title":"email"
-				},
-				"2":{
-					"input":"single-input",
-					"type":"text",
-					"title":"affiliation"
-				},
-				"3":{
-					"input":"single-input",
-					"type":"number",
-					"title":"Contact Number"
-				},
-				"4":{
-					"input":"single-selector",
-					"options":["Undergraduate","Postgraduate","Phd Researcher","PostDoctoral researcher", "Lecturer/Professor"],
-					"title":"Academic Position"
-				}
-			}
-		},
-		"2":{
-			"form-complete":true
+	"SM":{
+		"input-value":"No",
+		"checklist-item":true,
+		"checklist-item-body":{
+			"parentID":"test",
+			"item-title":"Verify the participant or anyone in their family does not have a history of epilepsy",
+			"item-body":"<h4>Verify the participant or anyone in their family does not have a history of epilepsy</h4><div><input type='checkbox' id='part-rec-area-agreement' name='part-rec-area-agreement'><label for='part-rec-area-agreement'>Agree</label></div>"
 		}
+	},
+	"PO":{
+		"input-value":"No",
+		"checklist-item":true,
+		"checklist-item-body":{
+			"parentID":"test",
+			"item-title":"Obtain explicit consent for observing",
+			"item-body":"<div><input type='checkbox' id='part-rec-area-agreement' name='part-rec-area-agreement'><label for='part-rec-area-agreement'>Agree</label></div>"
+		}
+	},
+	"PR":{
+		"input-value":"No",
+		"checklist-item":true,
+		"checklist-item-body":{
+			"parentID":"test",
+			"item-title":"Obtain explicit consent for recording",
+			"item-body":"<h4>obtain explicit consent for recording</h4><div><input type='checkbox' id='part-rec-area-agreement' name='part-rec-area-agreement'><label for='part-rec-area-agreement'>Agree</label></div><h4>if planing to use in publication, obtain explicit consent for the publication</h4><div><input type='checkbox' id='part-rec-area-agreement' name='part-rec-area-agreement'><label for='part-rec-area-agreement'>Agree</label></div>"
+		}
+	}
 }

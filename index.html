@@ -12,16 +12,75 @@
     </head>
 
     
-    <body>
+    <body style="background-color: #e9e9e9;">
 
             <form id="formV2">
                 <h1>Ethical Clearance Application</h1>
-                <h4>Form description</h4>
-                <textarea placeholder="From description"></textarea>
-                <h4>Project Title</h4>
-                <input type="text" placeholder="Short answer text"/>
-                <h4>Researcher(s) Involved</h4>
-                <fieldset>
+                <h2 class="main-title">General<i class="material-icons">arrow_drop_down</i></h2>
+                <div class="dropdown-main" style="display: block;">
+                    <h4>Project description</h4>
+                    <textarea placeholder="Project description"></textarea>
+                    <h4>Project Title</h4>
+                    <input type="text" placeholder="Short answer text"/>
+                    <h4>Researcher(s) Involved</h4>
+                    <fieldset>
+                        <div class="multiple-input-text">
+                            <div class="errorMessage" style="display:none;">
+                                <h5>Please fill in all fields</h5>
+                            </div>
+                            <div class="question-box argument-area">
+                                <div class='field'>
+                                    <label>Name of Researcher</label>
+                                    <input type='text'>
+                                </div>
+                                <div class='field'>
+                                    <label>Email</label>
+                                    <input type='email'>
+                                </div>
+                
+                                <div class='field'>
+                                    <label>Affiliation</label>
+                                    <select>
+                                        <option value='UCD' selected>UCD</option>
+                                        <option value='TCD'>TCD</option>
+                                        <option value='DCU'>DCU</option>
+                                        <option value='DIT'>DIT</option>
+                                        <option value='UCC'>UCC</option>
+                                        <option value='CIT'>CIT</option>
+                                        <option value='other'>Other</option>
+                                    </select>
+                                    <input type="text" class="other-option" placeholder="Other Option" style="display:none">
+                                </div>
+                
+                                <div class='field'>
+                                    <label>Contact Number</label>
+                                    <input type='number'>
+                                </div>
+
+                                <div class='field'>
+                                    <label>Academic position</label>
+                                    <select>
+                                        <option value='Undergraduate'>Undergraduate</option>
+                                        <option value='Postgraduate'>Postgraduate</option>
+                                        <option value='PhD Researcher'>PhD Researcher</option>
+                                        <option value='PostDoctoral researcher'>PostDoctoral researcher</option>
+                                        <option value='Lecturer/Professor'>Lecturer/Professor</option>
+                                        <option value='other'>Other</option>
+                                    </select>
+                                    <input type="text" class="other-option" placeholder="Other Option" style="display:none">
+                                </div>
+
+                                <div class='field'>
+                                    <label>Lead Researcher</label>
+                                    <input type='checkbox'>
+                                </div>
+                            </div>
+                            <button class="add-tag-button" type="button">Add More</button>
+                            <div class="multiple-input-text-tags" style="display: none"></div>
+                        </div>
+                    </fieldset>
+
+                    <h4>Supervisor(s)</h4>
                     <div class="multiple-input-text">
                         <div class="errorMessage" style="display:none;">
                             <h5>Please fill in all fields</h5>
@@ -47,647 +106,597 @@
                                     <option value='CIT'>CIT</option>
                                     <option value='other'>Other</option>
                                 </select>
-                                <input type="text" class="other-option" placeholder="Other Option" style="display:none">
-                            </div>
-            
-                            <div class='field'>
-                                <label>Contact Number</label>
-                                <input type='number'>
-                            </div>
-    
-                            <div class='field'>
-                                <label>Academic position</label>
-                                <select>
-                                    <option value='Undergraduate'>Undergraduate</option>
-                                    <option value='Postgraduate'>Postgraduate</option>
-                                    <option value='PhD Researcher'>PhD Researcher</option>
-                                    <option value='PostDoctoral researcher'>PostDoctoral researcher</option>
-                                    <option value='Lecturer/Professor'>Lecturer/Professor</option>
-                                    <option value='other'>Other</option>
-                                </select>
-                                <input type="text" class="other-option" placeholder="Other Option" style="display:none">
-                            </div>
-
-                            <div class='field'>
-                                <label>Lead Researcher</label>
-                                <input type='checkbox'>
+                                <input type="text" class="other-option" placeholder="Other Option" style="display:none"> 
                             </div>
                         </div>
                         <button class="add-tag-button" type="button">Add More</button>
-                        <div class="multiple-input-text-tags" style="display: none"></div>
+                        <div class="multiple-input-text-tags" style="display:none;"></div>
                     </div>
-                </fieldset>
-
-                <h4>Supervisor(s)</h4>
-                <div class="multiple-input-text">
-                    <div class="errorMessage" style="display:none;">
-                        <h5>Please fill in all fields</h5>
-                    </div>
-                    <div class="question-box argument-area">
-                        <div class='field'>
-                            <label>Name of Researcher</label>
-                            <input type='text'>
-                        </div>
-                        <div class='field'>
-                            <label>Email</label>
-                            <input type='email'>
-                        </div>
-        
-                        <div class='field'>
-                            <label>Affiliation</label>
-                            <select>
-                                <option value='UCD' selected>UCD</option>
-                                <option value='TCD'>TCD</option>
-                                <option value='DCU'>DCU</option>
-                                <option value='DIT'>DIT</option>
-                                <option value='UCC'>UCC</option>
-                                <option value='CIT'>CIT</option>
-                                <option value='other'>Other</option>
-                            </select>
-                            <input type="text" class="other-option" placeholder="Other Option" style="display:none"> 
-                        </div>
-                    </div>
-                    <button class="add-tag-button" type="button">Add More</button>
-                    <div class="multiple-input-text-tags" style="display:none;"></div>
-                </div>
-                <h4>Estimated Starting date for Project</h4>
-                <div class='field'>
-                    <label>Start date</label>
-                    <input type='date'>
-                </div>
-                <h4>Estimated Ending date for Project</h4>
-                <div class='field'>
-                    <label>End date</label>
-                    <input type='date'>
-                </div>
-
-                <h1>Participants</h1>
-                <textarea placeholder="Description"></textarea>
-                <h4>Expected total Number</h4>
-                <div class='field'>
-                    <input type='text'>
-                </div>
-                <h4>Inclusion Critera</h4>
-                <div class="checkBoxArea">
-                    <div class="checkBoxArea-div">
-                        <div>
-                            <input type="checkbox" id="age" name="age">
-                            <label for="age">Age</label>
-                            <select style="display:none">
-                                <option value='18+' selected>18+</option>
-                                <option value='18-25'>18-25</option>
-                                <option value='26-35'>26-35</option>
-                                <option value='36-45'>36-45</option>
-                                <option value='46-55'>46-55</option>
-                                <option value='other'>Other</option>
-                            </select>
-                            <div class="age-range">
-                                <input type="number" class="other-option" placeholder="Min" style="display:none">
-                                <input type="number" class="other-option" placeholder="Max" style="display:none">
-                            </div>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="gender" name="gender">
-                            <label for="gender">Sex/Gender</label>
-                            <textarea placeholder="Further Description" style="display:none"></textarea>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="profession" name="profession">
-                            <label for="profesion">Profession</label>
-                            <input type="text" class="other-option" placeholder="Further Description" style="display:none">
-                        </div>
-                        <div>
-                            <input type="checkbox" id="location" name="location">
-                            <label for="location">Location</label>
-                            <input type="text" class="other-option" placeholder="Further Description" style="display:none">
-                        </div>
-                        <div>
-                            <input type="checkbox" id="prior-knowledge" name="prior-knowledge">
-                            <label for="prior-knowledge">Prior Knowledge</label>
-                            <input type="text" class="other-option" placeholder="Further Description" style="display:none">
-                        </div>
-                    </div>
+                    <h4>Estimated Starting date for Project</h4>
                     <div class='field'>
-                        <div>
-                            <input type='text' placeholder="Other option">
-                            <button class="add-checkbox-option" type="button">Add Option</button>
-                        </div>
+                        <label>Start date</label>
+                        <input type='date'>
                     </div>
-                </div>
-
-                <h4>Exclusion Critera</h4>
-                <div class="checkBoxArea">
-                    <div class="checkBoxArea-div">
-                        <div>
-                            <input type="checkbox" id="age" name="age">
-                            <label for="age">Age</label>
-                            <select style="display:none">
-                                <option value='18+' selected>18+</option>
-                                <option value='18-25'>18-25</option>
-                                <option value='26-35'>26-35</option>
-                                <option value='36-45'>36-45</option>
-                                <option value='46-55'>46-55</option>
-                                <option value='other'>Other</option>
-                            </select>
-                            <div class="age-range">
-                                <input type="number" class="other-option" placeholder="Min" style="display:none">
-                                <input type="number" class="other-option" placeholder="Max" style="display:none">
-                            </div>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="gender" name="gender">
-                            <label for="gender">Sex/Gender</label>
-                            <textarea placeholder="Further Description" style="display:none"></textarea>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="profession" name="profession">
-                            <label for="profesion">Profession</label>
-                            <input type="text" class="other-option" placeholder="Further Description" style="display:none">
-                        </div>
-                        <div>
-                            <input type="checkbox" id="location" name="location">
-                            <label for="location">Location</label>
-                            <input type="text" class="other-option" placeholder="Further Description" style="display:none">
-                        </div>
-                        <div>
-                            <input type="checkbox" id="prior-knowledge" name="prior-knowledge">
-                            <label for="prior-knowledge">Prior Knowledge</label>
-                            <input type="text" class="other-option" placeholder="Further Description" style="display:none">
-                        </div>
-                    </div>
+                    <h4>Estimated Ending date for Project</h4>
                     <div class='field'>
-                        <div>
-                            <input type='text' placeholder="Other option">
-                            <button class="add-checkbox-option" type="button">Add Option</button>
-                        </div>
+                        <label>End date</label>
+                        <input type='date'>
                     </div>
                 </div>
-                <h4>Conflicts of Interest</h4>
-                <div class="checkBoxArea">
-                    <div class="checkBoxArea-div">
-                        <div>
-                            <input type="checkbox" id="colleagues" name="colleagues">
-                            <label for="colleagues">Colleagues</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="students" name="students">
-                            <label for="students">Students</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="friends" name="friends">
-                            <label for="friends">Friends</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="relatives" name="relatives">
-                            <label for="relatives">Relatives</label>
-                        </div>
-                    </div>
+                <h2 class="main-title">Participants<i class="material-icons">arrow_drop_down</i></h2>
+                <div class="dropdown-main">
+                    <h1>Participants</h1>
+                    <textarea placeholder="Description"></textarea>
+                    <h4>Expected total Number</h4>
                     <div class='field'>
-                        <div>
-                            <input type='text' placeholder="Other option">
-                            <button class="add-checkbox-option" type="button">Add Option</button>
-                        </div>
-                    </div>
-                </div>
-                <h4>Recruitment Method/Medium</h4>
-                <div class="checkBoxArea">
-                    <div class="checkBoxArea-div">
-                        <div>
-                            <input type="checkbox" id="online" name="online">
-                            <label for="online">Online</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="in-person" name="in-person">
-                            <label for="in-person">In-person</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="email" name="email">
-                            <label for="email">Email</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="class/event" name="class/event">
-                            <label for="class/event">Class/Event</label>
-                        </div>
-                    </div>
-                    <div class='field'>
-                        <div>
-                            <input type='text' placeholder="Other option">
-                            <button class="add-checkbox-option" type="button">Add Option</button>
-                        </div>
-                    </div>
-                </div>
-            
-                <h4>Will Participants be observed?</h4>
-                <div class='inline fields'>
-                    <fieldset>
-                        <div class='field'>
-                            <div class='ui radio checkbox'>
-                            <input type='radio' name='choice1' tabindex='0' class='hidden' data-area="part-obs-area">
-                            <label>Yes</label>
-                            </div>
-                        </div>
-                        <div class='field'>
-                            <div class='ui radio checkbox'>
-                            <input type='radio' name='choice1' tabindex='0' checked='' class='hidden'  data-area="part-obs-area">
-                            <label>No</label>
-                            </div>
-                        </div>
-                    </fieldset>
-                </div>
-                <div class="part-obs-area" style="display: none">
-                    <h4>obtain explicit consent for observing</h4>
-                    <div>
-                        <input type="checkbox" id="part-obs-area-agreement" name="part-obs-area-agreement">
-                        <label for="part-obs-area-agreement">Agree</label>
-                    </div>
-                </div>
-                <h4>Will Participants be recorder?</h4>
-                <div class='inline fields'>
-                    <fieldset>
-                        <div class='field'>
-                            <div class='ui radio checkbox'>
-                                <input type='radio' name='choice' tabindex='0' class='hidden' data-area="part-rec-area">
-                                <label>Yes</label>
-                            </div>
-                        </div>
-                        <div class='field'>
-                            <div class='ui radio checkbox'>
-                                <input type='radio' name='choice' checked='' tabindex='0' class='hidden' data-area="part-rec-area">
-                                <label>No</label>
-                            </div>
-                        </div>
-                    </fieldset>
-                </div>
-                <div class="part-rec-area" style="display: none">
-                    <h4>obtain explicit consent for recording</h4>
-                    <div>
-                        <input type="checkbox" id="part-rec-area-agreement" name="part-rec-area-agreement">
-                        <label for="part-rec-area-agreement">Agree</label>
-                    </div>
-                    <h4>if planing to use in publication, obtain explicit consent for the publication</h4>
-                    <div>
-                        <input type="checkbox" id="part-rec-area-agreement" name="part-rec-area-agreement">
-                        <label for="part-rec-area-agreement">Agree</label>
-                    </div>
-                </div>
-                <h1>Questionnaires</h1>
-                <h4>Do you use Questionnaires?</h4>
-                <div class='inline fields'>
-                    <fieldset>
-                        <div class='field'>
-                            <div class='ui radio checkbox'>
-                                <input type='radio' name='choice2' tabindex='0' class='hidden' data-toggle="questionnaire-question" data-area="checklist-area">
-                                <label>Yes</label>
-                            </div>
-                        </div>
-                        <div class='field'>
-                            <div class='ui radio checkbox'>
-                                <input type='radio'name='choice2' tabindex='0' class='hidden' checked="" data-toggle="questionnaire-question" data-area="checklist-area">
-                                <label>No</label>
-                            </div>
-                        </div>
-                    </fieldset>
-                </div>
-                <div class="checklist-area" style="display: none">
-                    <h4>Specify participants can omit questions or not answer any question. Each question must be optional.</h4>
-                    <div>
-                        <input type="checkbox" id="question-agreement" name="question-agreement">
-                        <label for="question-agreement">Agree</label>
-                    </div>
-                    <h4>The participant must have the option to ‘not submit, exit without submitting’ at the final submission point on your questionnaire.</h4>
-                    <div>
-                        <input type="checkbox" id="final-question-agreement" name="final-question-agreement">
-                        <label for="final-question-agreement">Agree</label>
-                    </div>
-                    <h4>Is the questionnaire online?</h4>
-                    <div class='inline fields'>
-                        <fieldset>
-                            <div class='field'>
-                                <div class='ui radio checkbox'>
-                                    <input type='radio' name='oqa' tabindex='0' class='hidden' data-toggle="questionnaire-online" data-area="online-questionnaire-area">
-                                    <label>Yes</label>
-                                </div>
-                            </div>
-                            <div class='field'>
-                                <div class='ui radio checkbox'>
-                                    <input type='radio' name='oqa' tabindex='0' class='hidden' checked='' data-toggle="questionnaire-online" data-area="online-questionnaire-area">
-                                    <label>No</label>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                    <div class="online-questionnaire-area" style="display: none">
-                        <h4>Questionnaires URL</h4>
-                        <div class='field'>
-                            <input type='text'>
-                        </div>
-                        <h4>First page of your questionnaire must repeat the content of the information sheet followed by consent form. If the participant does not agree to the consent, they must automatically be exited from the questionnaire.</h4>
-                        <div>
-                            <input type="checkbox" id="final-question-agreement" name="final-question-agreement">
-                            <label for="final-question-agreement">Agree</label>
-                        </div>
-                    </div>
-                    <h4>Is the questionnaire paper based?</h4>
-                    <div class='inline fields'>
-                        <fieldset>
-                            <div class='field'>
-                                <div class='ui radio checkbox'>
-                                    <input type='radio' name='pqa' tabindex='0' class='hidden' data-toggle="questionnaire-paper" data-area="paper-questionnaire-area">
-                                    <label>Yes</label>
-                                </div>
-                            </div>
-                            <div class='field'>
-                                <div class='ui radio checkbox'>
-                                    <input type='radio' name='pqa' tabindex='0' class='hidden' data-toggle="questionnaire-paper" checked='' data-area="paper-questionnaire-area">
-                                    <label>No</label>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                    <div class="paper-questionnaire-area" style="display: none">
-                        <h4>The following opt-out clause on the top of each page of the questionnaire: “Each question is optional. Feel free to omit a response to any question; however the researcher would be grateful if all questions are responded to.”</h4>
-                        <div>
-                            <input type="checkbox" id="final-question-agreement" name="final-question-agreement">
-                            <label for="final-question-agreement">Agree</label>
-                        </div>
-                    </div>
-
-                    <h4>Warn the participant against naming third parties: “Please do not name third parties in any open text field of the questionnaire. Any such replies will be anonymised.”</h4>
-                    <div>
-                        <input type="checkbox" id="final-question-agreement" name="final-question-agreement">
-                        <label for="final-question-agreement">Agree</label>
-                    </div>
-                </div>
-
-                <h4>What type of questionnaire do you use?</h4>
-                <div class="multiple-dropdown">
-                    <div class='field'>
-                        <div>
-                            <input type='text' placeholder="Other attribute">
-                            <button class="add-select-option" type="button">Add Attribute</button>
-                        </div>
-                    </div>
-                    <select name="Attributes" multiple="" class="ui fluid dropdown">
-                        <option value="">Questionannaires</option>
-                        <option value="SUS">SUS</option>
-                        <option value="ASQ">ASQ</option>
-                    </select>
-                </div>
-                <h4>How is it administrated?</h4>
-                <div class="checkBoxArea">
-                    <div class="checkBoxArea-div">
-                        <div>
-                            <input type="checkbox" id="online-admin" name="online-admin">
-                            <label for="online-admin">Online</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="paper-admin" name="paper-admin">
-                            <label for="paper-admin">Paper</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="email-admin" name="email-admin">
-                            <label for="email-admin">Email</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="verbally" name="verbally">
-                            <label for="verbally">Verbally</label>
-                        </div>
-                    </div>
-                    <div class='field'>
-                        <div>
-                            <input type='text' placeholder="Other option">
-                            <button class="add-checkbox-option" type="button">Add Option</button>
-                        </div>
-                    </div>
-                </div>
-                <h4>How is it administrated?</h4>
-                <div class="checkBoxArea">
-                    <div class="checkBoxArea-div">
-                        <div>
-                            <input type="checkbox" id="google-forms" name="google-forms">
-                            <label for="google-forms">Google Forms</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="Qualtrics" name="Qualtrics">
-                            <label for="Qualtrics">Qualtrics</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="Survey Monkey" name="Survey Monkey">
-                            <label for="Survey Monkey">Survey Monkey</label>
-                        </div>
-                    </div>
-                    <div class='field'>
-                        <div>
-                            <input type='text' placeholder="Other option">
-                            <button class="add-checkbox-option" type="button">Add Option</button>
-                        </div>
-                    </div>
-                </div>
-
-
-                <h1>Data Protection</h1>
-                <textarea placeholder="Description"></textarea>
-                <h4>Select personal data collected (Multiple select)</h4>
-                <div class="multiple-dropdown">
-                    <div class='field'>
-                        <div>
-                            <input type='text' placeholder="Other attribute">
-                            <button class="add-select-option" type="button">Add Attribute</button>
-                        </div>
-                    </div>
-                    <select name="Attributes" multiple="" class="ui fluid dropdown">
-                        <option value="">Attributes</option>
-                        <option value="age">Age</option>
-                        <option value="height">Height</option>
-                        <option value="eye-colour">Eye Colour</option>
-                        <option value="hair-colour">Hair Colour</option>
-                        <option value="date-of-birth">Date of birth</option>
-                    </select>
-                </div>
-                <h4>Where is the data stored</h4>
-                <div class="multiple-dropdown">
-                    <div class='field'>
-                        <div>
-                            <input type='text' placeholder="Other attribute">
-                            <button class="add-select-option" type="button">Add Attribute</button>
-                        </div>
-                    </div>
-                    <select name="Attributes" multiple="" class="ui fluid dropdown">
-                        <option value="">Attributes</option>
-                        <option value="Paper Documents">Paper Documents</option>
-                        <option value="Laptop/Computer">Laptop/Computer</option>
-                        <option value="Online Storage Services, e.g. Google Drive, Dropbox, One Drive">Online Storage Services, e.g. Google Drive, Dropbox, One Drive</option>
-                        <option value="Servers within University Infrastructure">Servers within University Infrastructure</option>
-                        <option value="Cloud Services e.g. AWS, Google Cloud, Azure">Cloud Services e.g. AWS, Google Cloud, Azure</option>
-                        <option value="Online services, e.g. Qualtrics, Google Forms">Online services, e.g. Qualtrics, Google Forms</option>
-                    </select>
-                </div>
-                <h4>How is this data secured</h4>
-                <div class="checkBoxArea">
-                    <div class="checkBoxArea-div">
-                        <div>
-                            <input type="checkbox" id="e" name="e">
-                            <label for="e">Encryption</label>
-                            <input type="text" class="other-option" placeholder="Further Description" style="display:none">
-                        </div>
-                        <div>
-                            <input type="checkbox" id="ac" name="ac">
-                            <label for="ac">Access Control, e.g. device lock, PIN, password</label>
-                            <input type="text" class="other-option" placeholder="Further Description" style="display:none">
-                        </div>
-                        <div>
-                            <input type="checkbox" id="pac" name="pac">
-                            <label for="pac">Physical Access Control, e.g. locks, access cards</label>
-                            <input type="text" class="other-option" placeholder="Further Description" style="display:none">
-                        </div>
-                    </div>
-                    <div class='field'>
-                        <div>
-                            <input type='text' placeholder="Other option">
-                            <button class="add-checkbox-option" type="button">Add Option</button>
-                        </div>
-                    </div>
-                </div>
-                <h4>Location of Data Stored</h4>
-                <div class="checkBoxArea">
-                    <div>
-                        <input type="checkbox" id="eu" name="eu">
-                        <label for="eu">European Union</label>
-                    </div>
-                    <div class='field'>
-                        <label>Other value</label>
                         <input type='text'>
                     </div>
-                </div>
-                <h4>Do you use any services?</h4>
-                <div class="multiple-dropdown">
-                    <div class='field'>
-                        <div>
-                            <input type='text' placeholder="Other attribute">
-                            <button class="add-select-option" type="button">Add Attribute</button>
+                    <h4>Inclusion Critera</h4>
+                    <div class="checkBoxArea">
+                        <div class="checkBoxArea-div">
+                            <div>
+                                <input type="checkbox" id="age" name="age">
+                                <label for="age">Age</label>
+                                <select style="display:none">
+                                    <option value='18+' selected>18+</option>
+                                    <option value='18-25'>18-25</option>
+                                    <option value='26-35'>26-35</option>
+                                    <option value='36-45'>36-45</option>
+                                    <option value='46-55'>46-55</option>
+                                    <option value='other'>Other</option>
+                                </select>
+                                <div class="age-range">
+                                    <input type="number" class="other-option" placeholder="Min" style="display:none">
+                                    <input type="number" class="other-option" placeholder="Max" style="display:none">
+                                </div>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="gender" name="gender">
+                                <label for="gender">Sex/Gender</label>
+                                <textarea placeholder="Further Description" style="display:none"></textarea>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="profession" name="profession">
+                                <label for="profesion">Profession</label>
+                                <input type="text" class="other-option" placeholder="Further Description" style="display:none">
+                            </div>
+                            <div>
+                                <input type="checkbox" id="location" name="location">
+                                <label for="location">Location</label>
+                                <input type="text" class="other-option" placeholder="Further Description" style="display:none">
+                            </div>
+                            <div>
+                                <input type="checkbox" id="prior-knowledge" name="prior-knowledge">
+                                <label for="prior-knowledge">Prior Knowledge</label>
+                                <input type="text" class="other-option" placeholder="Further Description" style="display:none">
+                            </div>
                         </div>
-                    </div>
-                    <select name="Services" multiple="" class="ui fluid dropdown">
-                        <option value="">Services</option>
-                        <option value="AWS cloud analytics">AWS cloud analytics</option>
-                        <option value="Google machine learning">Google machine learning</option>
-                    </select>
-                </div>
-                <h4>After analysing data, how do you store it?</h4>
-                <div class="checkBoxArea">
-                    <div class="checkBoxArea-div">
-                        <div>
-                            <input type="checkbox" id="delete" name="delete">
-                            <label for="delete">Delete</label>
-                            <input type="text" class="other-option" placeholder="Further Description" style="display:none">
-                        </div>
-                        <div>
-                            <input type="checkbox" id="anonymise it" name="anonymise it">
-                            <label for="anonymise it">Anonymise it</label>
-                            <input type="text" class="other-option" placeholder="Further Description" style="display:none">
-                        </div>
-                        <div>
-                            <input type="checkbox" id="keep as is" name="keep as is">
-                            <label for="keep as is">Keep as is</label>
-                            <input type="text" class="other-option" placeholder="Further Description" style="display:none">
-                        </div>
-                    </div>
-                    <div class='field'>
-                        <div>
-                            <input type='text' placeholder="Other option">
-                            <button class="add-checkbox-option" type="button">Add Option</button>
-                        </div>
-                    </div>
-                </div>
-                <h4>Apart from researchers and supervisors involved in the project, who else will you be sharing data with?</h4>
-                <textarea placeholder="Explination here"></textarea>
-
-
-                <h1>Project Activities</h1>
-                <textarea placeholder="Project Activities"></textarea>
-                <h4>Select methods that you use?</h4>
-                <div class="checkBoxArea">
-                    <div class="checkBoxArea-div">
-                        <div>
-                            <input type="checkbox" id="machine learning" name="machine learning">
-                            <label for="machine learning">Machine learning</label>
-                            <input type="text" class="other-option" placeholder="Further Description" style="display:none">
-                        </div>
-                        <div>
-                            <input type="checkbox" id="Natural language processing" name="Natural language processing">
-                            <label for="Natural language processing">Natural language processing</label>
-                            <input type="text" class="other-option" placeholder="Further Description" style="display:none">
-                        </div>
-                        <div>
-                            <input type="checkbox" id="Neural networks" name="Neural networks">
-                            <label for="Neural networks">Neural networks</label>
-                            <input type="text" class="other-option" placeholder="Further Description" style="display:none">
-                        </div>
-                        <div>
-                            <input type="checkbox" id="Deep learning" name="Deep learning">
-                            <label for="Deep learning">Deep learning</label>
-                            <input type="text" class="other-option" placeholder="Further Description" style="display:none">
-                        </div>
-                        <div>
-                            <input type="checkbox" id="artificial intelligence" name="artificial intelligence">
-                            <label for="artificial intelligence">Artificial intelligence</label>
-                            <input type="text" class="other-option" placeholder="Further Description" style="display:none">
-                        </div>
-                        <div>
-                            <input type="checkbox" id="Blockchain" name="Blockchain">
-                            <label for="Blockchain">Blockchain</label>
-                            <input type="text" class="other-option" placeholder="Further Description" style="display:none">
-                        </div>
-                    </div>
-                    <div class='field'>
-                        <div>
-                            <input type='text' placeholder="Other option">
-                            <button class="add-checkbox-option" type="button">Add Option</button>
-                        </div>
-                    </div>
-                </div>
-                <h4>Does it involve physical discomfort to the participant?</h4>
-                <div class='inline fields'>
-                    <fieldset>
                         <div class='field'>
-                            <div class='ui radio checkbox'>
-                                <input type='radio' name='choice3' checked='' tabindex='0' class='hidden'>
+                            <div>
+                                <input type='text' placeholder="Other option">
+                                <button class="add-checkbox-option" type="button">Add Option</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>Exclusion Critera</h4>
+                    <div class="checkBoxArea">
+                        <div class="checkBoxArea-div">
+                            <div>
+                                <input type="checkbox" id="age" name="age">
+                                <label for="age">Age</label>
+                                <select style="display:none">
+                                    <option value='18+' selected>18+</option>
+                                    <option value='18-25'>18-25</option>
+                                    <option value='26-35'>26-35</option>
+                                    <option value='36-45'>36-45</option>
+                                    <option value='46-55'>46-55</option>
+                                    <option value='other'>Other</option>
+                                </select>
+                                <div class="age-range">
+                                    <input type="number" class="other-option" placeholder="Min" style="display:none">
+                                    <input type="number" class="other-option" placeholder="Max" style="display:none">
+                                </div>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="gender" name="gender">
+                                <label for="gender">Sex/Gender</label>
+                                <textarea placeholder="Further Description" style="display:none"></textarea>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="profession" name="profession">
+                                <label for="profesion">Profession</label>
+                                <input type="text" class="other-option" placeholder="Further Description" style="display:none">
+                            </div>
+                            <div>
+                                <input type="checkbox" id="location" name="location">
+                                <label for="location">Location</label>
+                                <input type="text" class="other-option" placeholder="Further Description" style="display:none">
+                            </div>
+                            <div>
+                                <input type="checkbox" id="prior-knowledge" name="prior-knowledge">
+                                <label for="prior-knowledge">Prior Knowledge</label>
+                                <input type="text" class="other-option" placeholder="Further Description" style="display:none">
+                            </div>
+                        </div>
+                        <div class='field'>
+                            <div>
+                                <input type='text' placeholder="Other option">
+                                <button class="add-checkbox-option" type="button">Add Option</button>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Conflicts of Interest</h4>
+                    <div class="checkBoxArea">
+                        <div class="checkBoxArea-div">
+                            <div>
+                                <input type="checkbox" id="colleagues" name="colleagues">
+                                <label for="colleagues">Colleagues</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="students" name="students">
+                                <label for="students">Students</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="friends" name="friends">
+                                <label for="friends">Friends</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="relatives" name="relatives">
+                                <label for="relatives">Relatives</label>
+                            </div>
+                        </div>
+                        <div class='field'>
+                            <div>
+                                <input type='text' placeholder="Other option">
+                                <button class="add-checkbox-option" type="button">Add Option</button>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Recruitment Method/Medium</h4>
+                    <div class="checkBoxArea">
+                        <div class="checkBoxArea-div">
+                            <div>
+                                <input type="checkbox" id="online" name="online">
+                                <label for="online">Online</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="in-person" name="in-person">
+                                <label for="in-person">In-person</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="email" name="email">
+                                <label for="email">Email</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="class/event" name="class/event">
+                                <label for="class/event">Class/Event</label>
+                            </div>
+                        </div>
+                        <div class='field'>
+                            <div>
+                                <input type='text' placeholder="Other option">
+                                <button class="add-checkbox-option" type="button">Add Option</button>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <h4 id="PO">Will Participants be observed?</h4>
+                    <div class='inline fields'>
+                        <fieldset>
+                            <div class='field'>
+                                <div class='ui radio checkbox'>
+                                <input type='radio' name='choice1' tabindex='0' class='hidden' data-area="part-obs-area">
                                 <label>Yes</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class='field'>
-                            <div class='ui radio checkbox'>
-                                <input type='radio' name='choice3' tabindex='0' class='hidden'>
+                            <div class='field'>
+                                <div class='ui radio checkbox'>
+                                <input type='radio' name='choice1' tabindex='0' checked='' class='hidden'  data-area="part-obs-area">
                                 <label>No</label>
+                                </div>
                             </div>
+                        </fieldset>
+                    </div>
+                    <!-- <div class="part-obs-area" style="display: none">
+                        <h4>obtain explicit consent for observing</h4>
+                        <div>
+                            <input type="checkbox" id="part-obs-area-agreement" name="part-obs-area-agreement">
+                            <label for="part-obs-area-agreement">Agree</label>
                         </div>
-                    </fieldset>
+                    </div> -->
+                    <h4 id="PR">Will Participants be recorder?</h4>
+                    <div class='inline fields'>
+                        <fieldset>
+                            <div class='field'>
+                                <div class='ui radio checkbox'>
+                                    <input type='radio' name='choice' tabindex='0' class='hidden' data-area="part-rec-area">
+                                    <label>Yes</label>
+                                </div>
+                            </div>
+                            <div class='field'>
+                                <div class='ui radio checkbox'>
+                                    <input type='radio' name='choice' checked='' tabindex='0' class='hidden' data-area="part-rec-area">
+                                    <label>No</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- <div class="part-rec-area" style="display: none">
+                        <h4>obtain explicit consent for recording</h4>
+                        <div>
+                            <input type="checkbox" id="part-rec-area-agreement" name="part-rec-area-agreement">
+                            <label for="part-rec-area-agreement">Agree</label>
+                        </div>
+                        <h4>if planing to use in publication, obtain explicit consent for the publication</h4>
+                        <div>
+                            <input type="checkbox" id="part-rec-area-agreement" name="part-rec-area-agreement">
+                            <label for="part-rec-area-agreement">Agree</label>
+                        </div>
+                    </div> -->
                 </div>
-                <h4>Does it involve screens / monitors?</h4>
-                <div class='inline fields'>
-                    <fieldset>
+                <h2 class="main-title">Questionannaires<i class="material-icons">arrow_drop_down</i></h2>
+                <div class="dropdown-main">
+                    <h1>Questionnaires</h1>
+                    <h4 id="Q">Do you use Questionnaires?</h4>
+                    <div class='inline fields'>
+                        <fieldset>
+                            <div class='field'>
+                                <div class='ui radio checkbox'>
+                                    <input type='radio' name='choice2' tabindex='0' class='hidden' data-toggle="questionnaire-question" data-area="checklist-area">
+                                    <label>Yes</label>
+                                </div>
+                            </div>
+                            <div class='field'>
+                                <div class='ui radio checkbox'>
+                                    <input type='radio'name='choice2' tabindex='0' class='hidden' checked="" data-toggle="questionnaire-question" data-area="checklist-area">
+                                    <label>No</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="checklist-area" style="display: none">
+                        <!-- <h4>Specify participants can omit questions or not answer any question. Each question must be optional.</h4>
+                        <div>
+                            <input type="checkbox" id="question-agreement" name="question-agreement">
+                            <label for="question-agreement">Agree</label>
+                        </div>
+                        <h4>The participant must have the option to ‘not submit, exit without submitting’ at the final submission point on your questionnaire.</h4>
+                        <div>
+                            <input type="checkbox" id="final-question-agreement" name="final-question-agreement">
+                            <label for="final-question-agreement">Agree</label>
+                        </div>
+                        <h4>Is the questionnaire online?</h4>
+                        <div class='inline fields'>
+                            <fieldset>
+                                <div class='field'>
+                                    <div class='ui radio checkbox'>
+                                        <input type='radio' name='oqa' tabindex='0' class='hidden' data-toggle="questionnaire-online" data-area="online-questionnaire-area">
+                                        <label>Yes</label>
+                                    </div>
+                                </div>
+                                <div class='field'>
+                                    <div class='ui radio checkbox'>
+                                        <input type='radio' name='oqa' tabindex='0' class='hidden' checked='' data-toggle="questionnaire-online" data-area="online-questionnaire-area">
+                                        <label>No</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="online-questionnaire-area" style="display: none">
+                            <h4>Questionnaires URL</h4>
+                            <div class='field'>
+                                <input type='text'>
+                            </div>
+                            <h4>First page of your questionnaire must repeat the content of the information sheet followed by consent form. If the participant does not agree to the consent, they must automatically be exited from the questionnaire.</h4>
+                            <div>
+                                <input type="checkbox" id="final-question-agreement" name="final-question-agreement">
+                                <label for="final-question-agreement">Agree</label>
+                            </div>
+                        </div>
+                        <h4>Is the questionnaire paper based?</h4>
+                        <div class='inline fields'>
+                            <fieldset>
+                                <div class='field'>
+                                    <div class='ui radio checkbox'>
+                                        <input type='radio' name='pqa' tabindex='0' class='hidden' data-toggle="questionnaire-paper" data-area="paper-questionnaire-area">
+                                        <label>Yes</label>
+                                    </div>
+                                </div>
+                                <div class='field'>
+                                    <div class='ui radio checkbox'>
+                                        <input type='radio' name='pqa' tabindex='0' class='hidden' data-toggle="questionnaire-paper" checked='' data-area="paper-questionnaire-area">
+                                        <label>No</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="paper-questionnaire-area" style="display: none">
+                            <h4>The following opt-out clause on the top of each page of the questionnaire: “Each question is optional. Feel free to omit a response to any question; however the researcher would be grateful if all questions are responded to.”</h4>
+                            <div>
+                                <input type="checkbox" id="final-question-agreement" name="final-question-agreement">
+                                <label for="final-question-agreement">Agree</label>
+                            </div>
+                        </div>
+
+                        <h4>Warn the participant against naming third parties: “Please do not name third parties in any open text field of the questionnaire. Any such replies will be anonymised.”</h4>
+                        <div>
+                            <input type="checkbox" id="final-question-agreement" name="final-question-agreement">
+                            <label for="final-question-agreement">Agree</label>
+                        </div> -->
+                    </div>
+
+                    <h4>What type of questionnaire do you use?</h4>
+                    <div class="multiple-dropdown">
                         <div class='field'>
-                            <div class='ui radio checkbox'>
-                                <input type='radio' name='choice4' tabindex='0' class='hidden' data-area="screen-monitors-area">
-                                <label>Yes</label>
+                            <div>
+                                <input type='text' placeholder="Other attribute">
+                                <button class="add-select-option" type="button">Add Attribute</button>
+                            </div>
+                        </div>
+                        <select name="Attributes" multiple="" class="ui fluid dropdown">
+                            <option value="">Questionannaires</option>
+                            <option value="SUS">SUS</option>
+                            <option value="ASQ">ASQ</option>
+                        </select>
+                    </div>
+                    <h4>How is it administrated?</h4>
+                    <div class="checkBoxArea">
+                        <div class="checkBoxArea-div">
+                            <div>
+                                <input type="checkbox" id="online-admin" name="online-admin">
+                                <label for="online-admin">Online</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="paper-admin" name="paper-admin">
+                                <label for="paper-admin">Paper</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="email-admin" name="email-admin">
+                                <label for="email-admin">Email</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="verbally" name="verbally">
+                                <label for="verbally">Verbally</label>
                             </div>
                         </div>
                         <div class='field'>
-                            <div class='ui radio checkbox'>
-                                <input type='radio' name='choice4' checked='' tabindex='0' class='hidden' data-area="screen-monitors-area">
-                                <label>No</label>
+                            <div>
+                                <input type='text' placeholder="Other option">
+                                <button class="add-checkbox-option" type="button">Add Option</button>
                             </div>
                         </div>
-                    </fieldset>
-                </div>
-                <div class="screen-monitors-area" style="display: none">
-                    <h4>Verify the participant or anyone in their family does not have a history of epilepsy</h4>
-                    <div>
-                        <input type="checkbox" id="part-rec-area-agreement" name="part-rec-area-agreement">
-                        <label for="part-rec-area-agreement">Agree</label>
+                    </div>
+                    <h4>How is it administrated?</h4>
+                    <div class="checkBoxArea">
+                        <div class="checkBoxArea-div">
+                            <div>
+                                <input type="checkbox" id="google-forms" name="google-forms">
+                                <label for="google-forms">Google Forms</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="Qualtrics" name="Qualtrics">
+                                <label for="Qualtrics">Qualtrics</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="Survey Monkey" name="Survey Monkey">
+                                <label for="Survey Monkey">Survey Monkey</label>
+                            </div>
+                        </div>
+                        <div class='field'>
+                            <div>
+                                <input type='text' placeholder="Other option">
+                                <button class="add-checkbox-option" type="button">Add Option</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
+                <h2 class="main-title">Data Protection<i class="material-icons">arrow_drop_down</i></h2>
+                <div class="dropdown-main">
+                    <h1>Data Protection</h1>
+                    <textarea placeholder="Description"></textarea>
+                    <h4>Select personal data collected (Multiple select)</h4>
+                    <div class="multiple-dropdown">
+                        <div class='field'>
+                            <div>
+                                <input type='text' placeholder="Other attribute">
+                                <button class="add-select-option" type="button">Add Attribute</button>
+                            </div>
+                        </div>
+                        <select name="Attributes" multiple="" class="ui fluid dropdown">
+                            <option value="">Attributes</option>
+                            <option value="age">Age</option>
+                            <option value="height">Height</option>
+                            <option value="eye-colour">Eye Colour</option>
+                            <option value="hair-colour">Hair Colour</option>
+                            <option value="date-of-birth">Date of birth</option>
+                        </select>
+                    </div>
+                    <h4>Where is the data stored</h4>
+                    <div class="multiple-dropdown">
+                        <div class='field'>
+                            <div>
+                                <input type='text' placeholder="Other attribute">
+                                <button class="add-select-option" type="button">Add Attribute</button>
+                            </div>
+                        </div>
+                        <select name="Attributes" multiple="" class="ui fluid dropdown">
+                            <option value="">Attributes</option>
+                            <option value="Paper Documents">Paper Documents</option>
+                            <option value="Laptop/Computer">Laptop/Computer</option>
+                            <option value="Online Storage Services, e.g. Google Drive, Dropbox, One Drive">Online Storage Services, e.g. Google Drive, Dropbox, One Drive</option>
+                            <option value="Servers within University Infrastructure">Servers within University Infrastructure</option>
+                            <option value="Cloud Services e.g. AWS, Google Cloud, Azure">Cloud Services e.g. AWS, Google Cloud, Azure</option>
+                            <option value="Online services, e.g. Qualtrics, Google Forms">Online services, e.g. Qualtrics, Google Forms</option>
+                        </select>
+                    </div>
+                    <h4>How is this data secured</h4>
+                    <div class="checkBoxArea">
+                        <div class="checkBoxArea-div">
+                            <div>
+                                <input type="checkbox" id="e" name="e">
+                                <label for="e">Encryption</label>
+                                <input type="text" class="other-option" placeholder="Further Description" style="display:none">
+                            </div>
+                            <div>
+                                <input type="checkbox" id="ac" name="ac">
+                                <label for="ac">Access Control, e.g. device lock, PIN, password</label>
+                                <input type="text" class="other-option" placeholder="Further Description" style="display:none">
+                            </div>
+                            <div>
+                                <input type="checkbox" id="pac" name="pac">
+                                <label for="pac">Physical Access Control, e.g. locks, access cards</label>
+                                <input type="text" class="other-option" placeholder="Further Description" style="display:none">
+                            </div>
+                        </div>
+                        <div class='field'>
+                            <div>
+                                <input type='text' placeholder="Other option">
+                                <button class="add-checkbox-option" type="button">Add Option</button>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Location of Data Stored</h4>
+                    <div class="checkBoxArea">
+                        <div>
+                            <input type="checkbox" id="eu" name="eu">
+                            <label for="eu">European Union</label>
+                        </div>
+                        <div class='field'>
+                            <label>Other value</label>
+                            <input type='text'>
+                        </div>
+                    </div>
+                    <h4>Do you use any services?</h4>
+                    <div class="multiple-dropdown">
+                        <div class='field'>
+                            <div>
+                                <input type='text' placeholder="Other attribute">
+                                <button class="add-select-option" type="button">Add Attribute</button>
+                            </div>
+                        </div>
+                        <select name="Services" multiple="" class="ui fluid dropdown">
+                            <option value="">Services</option>
+                            <option value="AWS cloud analytics">AWS cloud analytics</option>
+                            <option value="Google machine learning">Google machine learning</option>
+                        </select>
+                    </div>
+                    <h4>After analysing data, how do you store it?</h4>
+                    <div class="checkBoxArea">
+                        <div class="checkBoxArea-div">
+                            <div>
+                                <input type="checkbox" id="delete" name="delete">
+                                <label for="delete">Delete</label>
+                                <input type="text" class="other-option" placeholder="Further Description" style="display:none">
+                            </div>
+                            <div>
+                                <input type="checkbox" id="anonymise it" name="anonymise it">
+                                <label for="anonymise it">Anonymise it</label>
+                                <input type="text" class="other-option" placeholder="Further Description" style="display:none">
+                            </div>
+                            <div>
+                                <input type="checkbox" id="keep as is" name="keep as is">
+                                <label for="keep as is">Keep as is</label>
+                                <input type="text" class="other-option" placeholder="Further Description" style="display:none">
+                            </div>
+                        </div>
+                        <div class='field'>
+                            <div>
+                                <input type='text' placeholder="Other option">
+                                <button class="add-checkbox-option" type="button">Add Option</button>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Apart from researchers and supervisors involved in the project, who else will you be sharing data with?</h4>
+                    <textarea placeholder="Explination here"></textarea>
+                </div>
+                <div class="dropdown-main">
+                    <h1>Project Activities</h1>
+                    <textarea placeholder="Project Activities"></textarea>
+                    <h4>Select methods that you use?</h4>
+                    <div class="checkBoxArea">
+                        <div class="checkBoxArea-div">
+                            <div>
+                                <input type="checkbox" id="machine learning" name="machine learning">
+                                <label for="machine learning">Machine learning</label>
+                                <input type="text" class="other-option" placeholder="Further Description" style="display:none">
+                            </div>
+                            <div>
+                                <input type="checkbox" id="Natural language processing" name="Natural language processing">
+                                <label for="Natural language processing">Natural language processing</label>
+                                <input type="text" class="other-option" placeholder="Further Description" style="display:none">
+                            </div>
+                            <div>
+                                <input type="checkbox" id="Neural networks" name="Neural networks">
+                                <label for="Neural networks">Neural networks</label>
+                                <input type="text" class="other-option" placeholder="Further Description" style="display:none">
+                            </div>
+                            <div>
+                                <input type="checkbox" id="Deep learning" name="Deep learning">
+                                <label for="Deep learning">Deep learning</label>
+                                <input type="text" class="other-option" placeholder="Further Description" style="display:none">
+                            </div>
+                            <div>
+                                <input type="checkbox" id="artificial intelligence" name="artificial intelligence">
+                                <label for="artificial intelligence">Artificial intelligence</label>
+                                <input type="text" class="other-option" placeholder="Further Description" style="display:none">
+                            </div>
+                            <div>
+                                <input type="checkbox" id="Blockchain" name="Blockchain">
+                                <label for="Blockchain">Blockchain</label>
+                                <input type="text" class="other-option" placeholder="Further Description" style="display:none">
+                            </div>
+                        </div>
+                        <div class='field'>
+                            <div>
+                                <input type='text' placeholder="Other option">
+                                <button class="add-checkbox-option" type="button">Add Option</button>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Does it involve physical discomfort to the participant?</h4>
+                    <div class='inline fields'>
+                        <fieldset>
+                            <div class='field'>
+                                <div class='ui radio checkbox'>
+                                    <input type='radio' name='choice3' checked='' tabindex='0' class='hidden'>
+                                    <label>Yes</label>
+                                </div>
+                            </div>
+                            <div class='field'>
+                                <div class='ui radio checkbox'>
+                                    <input type='radio' name='choice3' tabindex='0' class='hidden'>
+                                    <label>No</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <h4 id="SM">Does it involve screens / monitors?</h4>
+                    <div class='inline fields'>
+                        <fieldset>
+                            <div class='field'>
+                                <div class='ui radio checkbox'>
+                                    <input type='radio' name='choice4' tabindex='0' class='hidden' data-area="screen-monitors-area">
+                                    <label>Yes</label>
+                                </div>
+                            </div>
+                            <div class='field'>
+                                <div class='ui radio checkbox'>
+                                    <input type='radio' name='choice4' checked='' tabindex='0' class='hidden' data-area="screen-monitors-area">
+                                    <label>No</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- <div class="screen-monitors-area" style="display: none">
+                        <h4>Verify the participant or anyone in their family does not have a history of epilepsy</h4>
+                        <div>
+                            <input type="checkbox" id="part-rec-area-agreement" name="part-rec-area-agreement">
+                            <label for="part-rec-area-agreement">Agree</label>
+                        </div>
+                    </div> -->
+                </div>
+                <button type="button" id="checklist-button">checklist items</button>
             </form>
         
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

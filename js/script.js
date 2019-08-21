@@ -1,6 +1,13 @@
 
+var json_file;
 $( document ).ready(function() {
 
+
+    $.getJSON("form.json").fail(function(){
+        alert("fail");
+    }).done(function(json) {
+        json_file = json;
+    });
 
     $('.ui.radio.checkbox').checkbox();
 
@@ -90,25 +97,54 @@ $( document ).ready(function() {
     });
 
     $("body").on("change", "input[type='radio']",function(){
-      console.log($(this).attr("data-area"));
       displayElements($(this),$(this).attr("data-area"));
+      findQuestion($(this));
     });
 
-    // $("body").on("change", ".questionnaire-online",function(){
-    //   if($(this).parent().find("label")[0].innerText == "Yes"){
-    //     $(".online-questionnaire-area").slideToggle();
-    //   }else if($(this).parent().find("label")[0].innerText == "No" && $(".checklist-area").css("display")=="block"){
-    //     $(".online-questionnaire-area").slideToggle();
-    //   }
-    // });
+    $("#checklist-button").on("click",function(){
+      $.each(json_file, function(index, value){
 
+          if(json_file[index]["input-value"]=="Yes"){
+            $("#formV2").append(json_file[index]["checklist-item-body"]["item-body"]);
+          }
+      
+      });
+
+    });
+
+    $("body").on("click", "#part-rec-area-agreement", function(){
+      console.log("fds");
+    });
+
+    $(".main-title").click(function(){
+      var element = $(this)[0].nextElementSibling;
+      $(element).slideToggle();
+      console.log(element);
+    });
 });
 
-function displayElements(element, area_to_display){
+function findQuestion(element){
+  var questionElement;
+  for(var i of element.parents()){
+    if($(i).hasClass("fields")){
+      questionElement = $(i)[0].previousElementSibling;
+    }
+  }
+  indexIdIdentifier = $(questionElement).attr("id");
+  if($(element).parent().find("label")[0].innerText=="Yes"){
+    json_file[indexIdIdentifier]["input-value"] = "Yes";
+  }else{
+    json_file[indexIdIdentifier]["input-value"] = "No";
+  }
+
+  console.log(json_file);
+}
+
+function displayElements(element, areaToDisplay){
   if($(element).parent().find("label")[0].innerText == "Yes"){
-    $("."+area_to_display).slideToggle();
-  }else if($(element).parent().find("label")[0].innerText == "No" && $("."+area_to_display).css("display")=="block"){
-    $("."+area_to_display).slideToggle();
+    $("."+areaToDisplay).slideToggle();
+  }else if($(element).parent().find("label")[0].innerText == "No" && $("."+areaToDisplay).css("display")=="block"){
+    $("."+areaToDisplay).slideToggle();
   }
 }
 
