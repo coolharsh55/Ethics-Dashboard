@@ -30,7 +30,7 @@
                             </div>
                             <div class="question-box argument-area">
                                 <div class='field'>
-                                    <label>Name of Researcher</label>
+                                    <label>Researcher Name</label>
                                     <input type='text'>
                                 </div>
                                 <div class='field'>
@@ -41,8 +41,8 @@
                                 <div class='field'>
                                     <label>Affiliation</label>
                                     <select>
-                                        <option value='UCD' selected>UCD</option>
-                                        <option value='TCD'>TCD</option>
+                                        <option value='UCD'>UCD</option>
+                                        <option value='TCD' selected>TCD</option>
                                         <option value='DCU'>DCU</option>
                                         <option value='DIT'>DIT</option>
                                         <option value='UCC'>UCC</option>
@@ -60,9 +60,9 @@
                                 <div class='field'>
                                     <label>Academic position</label>
                                     <select>
+                                        <option value='PhD Researcher'>PhD Researcher</option>
                                         <option value='Undergraduate'>Undergraduate</option>
                                         <option value='Postgraduate'>Postgraduate</option>
-                                        <option value='PhD Researcher'>PhD Researcher</option>
                                         <option value='PostDoctoral researcher'>PostDoctoral researcher</option>
                                         <option value='Lecturer/Professor'>Lecturer/Professor</option>
                                         <option value='other'>Other</option>
@@ -87,7 +87,7 @@
                         </div>
                         <div class="question-box argument-area">
                             <div class='field'>
-                                <label>Name of Researcher</label>
+                                <label>Supervisor Name</label>
                                 <input type='text'>
                             </div>
                             <div class='field'>
@@ -98,8 +98,8 @@
                             <div class='field'>
                                 <label>Affiliation</label>
                                 <select>
-                                    <option value='UCD' selected>UCD</option>
-                                    <option value='TCD'>TCD</option>
+                                    <option value='UCD'>UCD</option>
+                                    <option value='TCD' selected>TCD</option>
                                     <option value='DCU'>DCU</option>
                                     <option value='DIT'>DIT</option>
                                     <option value='UCC'>UCC</option>
@@ -112,15 +112,15 @@
                         <button class="add-tag-button" type="button">Add More</button>
                         <div class="multiple-input-text-tags" style="display:none;"></div>
                     </div>
-                    <h4>Estimated Starting date for Project</h4>
-                    <div class='field'>
-                        <label>Start date</label>
-                        <input type='date'>
-                    </div>
-                    <h4>Estimated Ending date for Project</h4>
-                    <div class='field'>
-                        <label>End date</label>
-                        <input type='date'>
+                    <div style="display:flex;margin-top:20px;">
+                        <div class='field'>
+                            <label>Estimated Start date</label>
+                            <input type='date'>
+                        </div>
+                        <div class='field'>
+                            <label>Estimated End date</label>
+                            <input type='date'>
+                        </div>
                     </div>
                 </div>
                 <h2 class="main-title">Participants<i class="material-icons">arrow_drop_down</i></h2>
@@ -129,7 +129,7 @@
                     <textarea placeholder="Description"></textarea>
                     <h4>Expected total Number</h4>
                     <div class='field'>
-                        <input type='text'>
+                        <input type='number'>
                     </div>
                     <h4>Inclusion Critera</h4>
                     <div class="checkBoxArea">
@@ -174,7 +174,7 @@
                         <div class='field'>
                             <div>
                                 <input type='text' placeholder="Other option">
-                                <button class="add-checkbox-option" type="button">Add Option</button>
+                                <button class="add-checkbox-option" type="button">Add Criteria</button>
                             </div>
                         </div>
                     </div>
@@ -222,7 +222,7 @@
                         <div class='field'>
                             <div>
                                 <input type='text' placeholder="Other option">
-                                <button class="add-checkbox-option" type="button">Add Option</button>
+                                <button class="add-checkbox-option" type="button">Add Criteria</button>
                             </div>
                         </div>
                     </div>
@@ -249,7 +249,7 @@
                         <div class='field'>
                             <div>
                                 <input type='text' placeholder="Other option">
-                                <button class="add-checkbox-option" type="button">Add Option</button>
+                                <button class="add-checkbox-option" type="button">Add Criteria</button>
                             </div>
                         </div>
                     </div>
@@ -276,7 +276,7 @@
                         <div class='field'>
                             <div>
                                 <input type='text' placeholder="Other option">
-                                <button class="add-checkbox-option" type="button">Add Option</button>
+                                <button class="add-checkbox-option" type="button">Add Criteria</button>
                             </div>
                         </div>
                     </div>
@@ -431,11 +431,11 @@
                         <div class='field'>
                             <div>
                                 <input type='text' placeholder="Other attribute">
-                                <button class="add-select-option" type="button">Add Attribute</button>
+                                <button class="add-select-option" type="button">Add Criteria</button>
                             </div>
                         </div>
                         <select name="Attributes" multiple="" class="ui fluid dropdown">
-                            <option value="">Questionannaires</option>
+                            <option value="">Select Questionannaires</option>
                             <option value="SUS">SUS</option>
                             <option value="ASQ">ASQ</option>
                         </select>
@@ -463,7 +463,7 @@
                         <div class='field'>
                             <div>
                                 <input type='text' placeholder="Other option">
-                                <button class="add-checkbox-option" type="button">Add Option</button>
+                                <button class="add-checkbox-option" type="button">Add Criteria</button>
                             </div>
                         </div>
                     </div>
@@ -486,7 +486,7 @@
                         <div class='field'>
                             <div>
                                 <input type='text' placeholder="Other option">
-                                <button class="add-checkbox-option" type="button">Add Option</button>
+                                <button class="add-checkbox-option" type="button">Add Criteria</button>
                             </div>
                         </div>
                     </div>
@@ -500,11 +500,11 @@
                         <div class='field'>
                             <div>
                                 <input type='text' placeholder="Other attribute">
-                                <button class="add-select-option" type="button">Add Attribute</button>
+                                <button class="add-select-option" type="button">Add Criteria</button>
                             </div>
                         </div>
                         <select name="Attributes" multiple="" class="ui fluid dropdown">
-                            <option value="">Attributes</option>
+                            <option value="">Select Criteria</option>
                             <option value="age">Age</option>
                             <option value="height">Height</option>
                             <option value="eye-colour">Eye Colour</option>
@@ -517,11 +517,11 @@
                         <div class='field'>
                             <div>
                                 <input type='text' placeholder="Other attribute">
-                                <button class="add-select-option" type="button">Add Attribute</button>
+                                <button class="add-select-option" type="button">Add Criteria</button>
                             </div>
                         </div>
                         <select name="Attributes" multiple="" class="ui fluid dropdown">
-                            <option value="">Attributes</option>
+                            <option value="">Select Criteria</option>
                             <option value="Paper Documents">Paper Documents</option>
                             <option value="Laptop/Computer">Laptop/Computer</option>
                             <option value="Online Storage Services, e.g. Google Drive, Dropbox, One Drive">Online Storage Services, e.g. Google Drive, Dropbox, One Drive</option>
@@ -552,7 +552,7 @@
                         <div class='field'>
                             <div>
                                 <input type='text' placeholder="Other option">
-                                <button class="add-checkbox-option" type="button">Add Option</button>
+                                <button class="add-checkbox-option" type="button">Add Criteria</button>
                             </div>
                         </div>
                     </div>
@@ -572,11 +572,11 @@
                         <div class='field'>
                             <div>
                                 <input type='text' placeholder="Other attribute">
-                                <button class="add-select-option" type="button">Add Attribute</button>
+                                <button class="add-select-option" type="button">Add Criteria</button>
                             </div>
                         </div>
                         <select name="Services" multiple="" class="ui fluid dropdown">
-                            <option value="">Services</option>
+                            <option value="">Select Services</option>
                             <option value="AWS cloud analytics">AWS cloud analytics</option>
                             <option value="Google machine learning">Google machine learning</option>
                         </select>
@@ -603,7 +603,7 @@
                         <div class='field'>
                             <div>
                                 <input type='text' placeholder="Other option">
-                                <button class="add-checkbox-option" type="button">Add Option</button>
+                                <button class="add-checkbox-option" type="button">Add Criteria</button>
                             </div>
                         </div>
                     </div>
@@ -650,7 +650,7 @@
                         <div class='field'>
                             <div>
                                 <input type='text' placeholder="Other option">
-                                <button class="add-checkbox-option" type="button">Add Option</button>
+                                <button class="add-checkbox-option" type="button">Add Criteria</button>
                             </div>
                         </div>
                     </div>
@@ -697,6 +697,7 @@
                     </div> -->
                 </div>
                 <button type="button" id="checklist-button">checklist items</button>
+
             </form>
         
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

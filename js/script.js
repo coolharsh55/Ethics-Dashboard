@@ -24,17 +24,16 @@ $( document ).ready(function() {
       if(checkElements(input_elements)){
         var name = $(input_elements[0]).find("input").val()
         var tagArea = $(this).parent().find(".multiple-input-text-tags");
-        var otherInfo = gatherInfo(input_elements);
         $(this).parent().find(".multiple-input-text-tags").css("display","flex");
         tagArea.append(
-          $("<div/>",{'class':'multiple-input-text-tag'}).append(
-            $("<a/>", {'class':"ui label transition visible data-button", text:name}),
-            $("<div />", {class:"ui popup top left transition hidden"}).append(
-              $("<div />",{class:"ui flex"}).append(otherInfo)
-            ),
-            $("<i/>", {'class':"delete icon remove-icon", title:"remove"})
+          $("<div />",{class:"box"}).append(gatherInfo(input_elements),
+            $("<i />",{class:"material-icons edit-test", text:"create"}),
+            $("<i />",{class:"material-icons delete-button", text:"clear"})
           )
         );
+        for(var i of tagArea.find("input")){
+          $(i).attr("disabled","");
+        }
         $(this).parent().find(".errorMessage").css("display", "none");
           
       }else{
@@ -44,7 +43,7 @@ $( document ).ready(function() {
       }
     });
 
-    $("body").on("click",".delete",function(){
+    $("body").on("click",".delete-button",function(){
       $(this).parent().remove();
     });
 
@@ -90,11 +89,6 @@ $( document ).ready(function() {
       }
     });
 
-    $("body").on("click", ".data-button", function(){
-      $(this).popup({
-        on: 'hover'
-      });
-    });
 
     $("body").on("change", "input[type='radio']",function(){
       displayElements($(this),$(this).attr("data-area"));
@@ -112,9 +106,22 @@ $( document ).ready(function() {
 
     });
 
-    $("body").on("click", "#part-rec-area-agreement", function(){
-      console.log("fds");
+    $("body").on("click", ".edit-test", function(){
+      var elements = $(this).parent().parent().find("input");
+      elements.removeAttr("disabled");
+      for(var i of elements){
+        $(i).css("border","1px solid grey");
+      }
     });
+
+    $("body").on("change", "input[type='number']", function(){
+        if($(this).val() < 0){
+          $(this).css("border","1px solid red");
+          alert("Number must be positive");
+        }else{
+          $(this).css("border","1px solid green");
+        }
+    })
 
     $(".main-title").click(function(){
       var element = $(this)[0].nextElementSibling;
@@ -205,16 +212,20 @@ function gatherInfo(input_elements){
     if($(i).find("input")[0].type=="checkbox"){
       if($(i).find("input")[0].checked==true){
         temp.push(
-          $("<div />", {class:"column"}).append(
-            $("<h4 />", {text:title}),
-            $("<input />", {'value':"Yes"})
+          $("<div />", {class:"field"}).append(
+            $("<div />").append(
+              $("<h5 />",{text:title}),
+              $("<input />", {'type':'text','value':'Yes'})
+            )
           )
         );
       }else{
         temp.push(
-          $("<div />", {class:"column"}).append(
-            $("<h4 />", {text:title}),
-            $("<input />", {'value':"No"})
+          $("<div />", {class:"field"}).append(
+            $("<div />").append(
+              $("<h5 />",{text:title}),
+              $("<input />", {'type':'text','value':'No'})
+            )
           )
         );
       }
@@ -222,110 +233,38 @@ function gatherInfo(input_elements){
       if($(i).find("input").val()!=""){
         value = $(i).find("input").val();
         temp.push(
-          $("<div />", {class:"column"}).append(
-            $("<h4 />", {text:title}),
-            $("<input />", {'value':value})
+          $("<div />", {class:"field"}).append(
+            $("<div />").append(
+              $("<h5 />",{text:title}),
+              $("<input />", {'type':'text','value':value})
+            )
           )
         );
         $(i).find("input").val("");
       }else if($(i).find("select").val()=="other"){
         value = $(i).find("input").val();
         temp.push(
-          $("<div />", {class:"column"}).append(
-            $("<h4 />", {text:title}),
-            $("<input />", {'value':value})
+          $("<div />", {class:"field"}).append(
+            $("<div />").append(
+              $("<h5 />",{text:title}),
+              $("<input />", {'type':'text','value':value})
+            )
           )
         );
         $(i).find("input").val("");
       }else{
         value = $(i).find("select").val();
         temp.push(
-          $("<div />", {class:"column"}).append(
-            $("<h4 />", {text:title}),
-            $("<input />", {'value':value})
+          $("<div />", {class:"field"}).append(
+            $("<div />").append(
+              $("<h5 />",{text:title}),
+              $("<input />", {'type':'text','value':value})
+            )
           )
         );
         
       }
     }
-    
   }
-  
   return temp;
 }
-
-// function chooseInputType(val){
-//   for(var i of $("form").children()){
-//     $(i).css("display", "none");
-//   }
-//   $.getJSON("form.json", function(json) {
-//       var jsonObjectSize = Object.keys(json).length;
-//       if(val<=jsonObjectSize){
-//           var element = $("div[data-name="+json[val]["input"]+"]");
-//           element.css("display", "block");
-//           if(json[val]["arguments"]){
-//             addAdditionalArguments(json[val], element);
-//           }
-//       }
-//       if(json[val]["form-complete"]){
-//         $("#final-submit-button").css("display","block");
-//       }
-//   });
-// }
-
-
-
-// function addToMultipleDropdown(){
-//   return "<option value='MA'>Mason</option>"
-// }
-
-
-// function addToRadio(){
-//   return "<div class='field'>\
-//   <div class='ui radio checkbox'>\
-//   <input type='radio' name='choice' checked='' tabindex='0' class='hidden'>\
-//   <label>Maybe</label>\
-//   </div>\
-// </div>"
-// }
-
-
-// function addAdditionalArguments(arguments, element){
-//   var argumentSize = Object.keys(arguments["arguments"]).length;
-//   var argumentArea = $(element).find(".argument-area");
-//   for(var i=0;i<argumentSize;i++){
-//     if(arguments["arguments"][i]["input"]=="single-input"){
-//         argumentArea.append(addSingleInput(arguments["arguments"][i]["title"],arguments["arguments"][i]["type"]));
-//     }else if(arguments["arguments"][i]["input"]=="single-selector"){
-//         argumentArea.append(addSingleSelector(arguments["arguments"][i]["options"], arguments["arguments"][i]["title"]));
-//     }
-//   }
-
-//   argumentArea.append(
-//       $("<button/>",{"type":'button' ,class:'multiple-input-text-button', id:"hello"}).append(
-//           $("<i/>",{"class":'material-icons',"text":"add"})
-//       )
-//   );
-// }
-
-// function addSingleInput(name,type){
-//   return  $('<div/>', {'class': 'field'}).append
-//             (
-//               $('<label/>', {"text":name}) ,
-//               $('<input/>', {"class": 'multiple-input-text-box user-input', "type": type})
-//             );
-// }
-
-
-// function addSingleSelector(options, title){
-//   return $("<div/>" ,{class:'field' ,"data-name":'single-selector'}).append(
-//             $('<label/>', {"text":title}),
-//             $("<select/>", {class:"ui fluid dropdown data-user-value user-input"}).append(function(){
-//               var optionList = [];
-//               for(var i in options){
-//                 optionList.push($("<option/>",{value:options[i],text:options[i]}));
-//               }
-//               return optionList;
-//             })
-//           );
-// }
