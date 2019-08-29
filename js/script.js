@@ -1,5 +1,6 @@
 
 var json_file;
+var userData = {};
 $( document ).ready(function() {
 
 
@@ -29,9 +30,6 @@ $( document ).ready(function() {
     });
 
     $("#test-button").click(function(){
-
-      var userData = {};
-
       $("input, textarea").each(function(){
         var value = $(this).val();
         if(value){
@@ -70,7 +68,6 @@ $( document ).ready(function() {
       });
 
 
-      //fix radio and european 
       $(".checkBoxArea-div").each(function(){
         var title = $($(this).parent()[0].previousElementSibling)[0].innerText;
         var tagsObj = [];
@@ -149,9 +146,6 @@ $( document ).ready(function() {
 
         userData[parentTitle] = attributesList;
       });
-
-      console.log(JSON.stringify(userData));
-
     });
 
     $(".add-tag-button").on("click", function(){
@@ -403,24 +397,20 @@ function gatherInfo(input_elements){
 }
 
 
-// function print() {
-//   const filename  = 'ThisIsYourPDFFilename.pdf';
-
-//   html2canvas(document.querySelector('#nodeToRenderAsPDF')).then(canvas => {
-//     let pdf = new jsPDF('p', 'mm', 'a4');
-//     pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298);
-//     pdf.save(filename);
-//   });
-// }
 
 // Variant
 // This one lets you improve the PDF sharpness by scaling up the HTML node tree to render as an image before getting pasted on the PDF.
 function print(quality = 1) {
   var doc = new jsPDF()
-  doc.text(20, 20, 'Hello world!')
-  doc.text(20, 30, 'This is client-side Javascript, pumping out a PDF.')
-  doc.addPage()
-  doc.text(20, 20, 'Do you like that?')
+
+  var json = JSON.parse(JSON.stringify(userData));
+  Object.keys(json).forEach(function(key) {
+    doc.text(20, 20, String(key));
+  });
+  // doc.text(20, 20, 'Hello world!')
+  // doc.text(20, 30, 'This is client-side Javascript, pumping out a PDF.')
+  // doc.addPage()
+  // doc.text(20, 20, 'Do you like that?')
   doc.output('save', 'filename.pdf')
   return doc;
 }
