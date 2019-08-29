@@ -146,6 +146,8 @@ $( document ).ready(function() {
 
         userData[parentTitle] = attributesList;
       });
+
+      console.log(JSON.stringify(userData));
     });
 
     $(".add-tag-button").on("click", function(){
