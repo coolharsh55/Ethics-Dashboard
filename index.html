@@ -13,7 +13,7 @@
 
     
     <body style="background-color: #e9e9e9;">
-
+        <button type="button" id="test-button" style="width:15%;height:30px;position:fixed;top:10px;left:10px;">test</button>
             <form id="formV2">
                 <h1>Ethical Clearance Application</h1>
                 <h2 class="main-title">General<i class="material-icons">arrow_drop_down</i></h2>
@@ -81,44 +81,47 @@
                     </fieldset>
 
                     <h4>Supervisor(s)</h4>
-                    <div class="multiple-input-text">
-                        <div class="errorMessage" style="display:none;">
-                            <h5>Please fill in all fields</h5>
+                    <fieldset>
+                        <div class="multiple-input-text">
+                            <div class="errorMessage" style="display:none;">
+                                <h5>Please fill in all fields</h5>
+                            </div>
+                            <div class="question-box argument-area">
+                                <div class='field'>
+                                    <label>Supervisor Name</label>
+                                    <input type='text'>
+                                </div>
+                                <div class='field'>
+                                    <label>Email</label>
+                                    <input type='email'>
+                                </div>
+                
+                                <div class='field'>
+                                    <label>Affiliation</label>
+                                    <select>
+                                        <option value='UCD'>UCD</option>
+                                        <option value='TCD' selected>TCD</option>
+                                        <option value='DCU'>DCU</option>
+                                        <option value='DIT'>DIT</option>
+                                        <option value='UCC'>UCC</option>
+                                        <option value='CIT'>CIT</option>
+                                        <option value='other'>Other</option>
+                                    </select>
+                                    <input type="text" class="other-option" placeholder="Other Option" style="display:none"> 
+                                </div>
+                            </div>
+                            <button class="add-tag-button" type="button">Add More</button>
+                            <div class="multiple-input-text-tags" style="display:none;"></div>
                         </div>
-                        <div class="question-box argument-area">
-                            <div class='field'>
-                                <label>Supervisor Name</label>
-                                <input type='text'>
-                            </div>
-                            <div class='field'>
-                                <label>Email</label>
-                                <input type='email'>
-                            </div>
-            
-                            <div class='field'>
-                                <label>Affiliation</label>
-                                <select>
-                                    <option value='UCD'>UCD</option>
-                                    <option value='TCD' selected>TCD</option>
-                                    <option value='DCU'>DCU</option>
-                                    <option value='DIT'>DIT</option>
-                                    <option value='UCC'>UCC</option>
-                                    <option value='CIT'>CIT</option>
-                                    <option value='other'>Other</option>
-                                </select>
-                                <input type="text" class="other-option" placeholder="Other Option" style="display:none"> 
-                            </div>
-                        </div>
-                        <button class="add-tag-button" type="button">Add More</button>
-                        <div class="multiple-input-text-tags" style="display:none;"></div>
-                    </div>
+                    </fieldset>
+
                     <div style="display:flex;margin-top:20px;">
                         <div class='field'>
-                            <label>Estimated Start date</label>
+                            <h4>Estimated Start date</h4>
                             <input type='date'>
                         </div>
                         <div class='field'>
-                            <label>Estimated End date</label>
+                            <h4>Estimated End date</h4>
                             <input type='date'>
                         </div>
                     </div>
@@ -126,11 +129,10 @@
                 <h2 class="main-title">Participants<i class="material-icons">arrow_drop_down</i></h2>
                 <div class="dropdown-main">
                     <h1>Participants</h1>
+                    <h4>Description of Participants</h4>
                     <textarea placeholder="Description"></textarea>
                     <h4>Expected total Number</h4>
-                    <div class='field'>
-                        <input type='number'>
-                    </div>
+                    <input type='number' style="border:1px solid">
                     <h4>Inclusion Critera</h4>
                     <div class="checkBoxArea">
                         <div class="checkBoxArea-div">
@@ -467,7 +469,7 @@
                             </div>
                         </div>
                     </div>
-                    <h4>How is it administrated?</h4>
+                    <h4>Do you use any service?</h4>
                     <div class="checkBoxArea">
                         <div class="checkBoxArea-div">
                             <div>
@@ -494,6 +496,7 @@
                 <h2 class="main-title">Data Protection<i class="material-icons">arrow_drop_down</i></h2>
                 <div class="dropdown-main">
                     <h1>Data Protection</h1>
+                    <h4>Data Protection description</h4>
                     <textarea placeholder="Description"></textarea>
                     <h4>Select personal data collected (Multiple select)</h4>
                     <div class="multiple-dropdown">
@@ -558,9 +561,11 @@
                     </div>
                     <h4>Location of Data Stored</h4>
                     <div class="checkBoxArea">
-                        <div>
-                            <input type="checkbox" id="eu" name="eu">
-                            <label for="eu">European Union</label>
+                        <div class="checkBoxArea-div">
+                            <div>
+                                <input type="checkbox" id="eu" name="eu">
+                                <label for="eu">European Union</label>
+                            </div>
                         </div>
                         <div class='field'>
                             <label>Other value</label>
@@ -659,13 +664,13 @@
                         <fieldset>
                             <div class='field'>
                                 <div class='ui radio checkbox'>
-                                    <input type='radio' name='choice3' checked='' tabindex='0' class='hidden'>
+                                    <input type='radio' name='choice3' tabindex='0' class='hidden'>
                                     <label>Yes</label>
                                 </div>
                             </div>
                             <div class='field'>
                                 <div class='ui radio checkbox'>
-                                    <input type='radio' name='choice3' tabindex='0' class='hidden'>
+                                    <input type='radio' name='choice3' checked='' tabindex='0' class='hidden'>
                                     <label>No</label>
                                 </div>
                             </div>
@@ -697,11 +702,14 @@
                     </div> -->
                 </div>
                 <button type="button" id="checklist-button">checklist items</button>
+                <button type="button" id="pdf-button">pdf</button>
 
             </form>
         
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="semantic-ui/semantic.min.js"></script>   
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>  
+
         <script type="text/javascript" src="js/script.js"></script>
     </body>
 </html>

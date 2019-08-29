@@ -19,6 +19,141 @@ $( document ).ready(function() {
         };
     });
 
+    $("#pdf-button").click(function(){
+      print();
+    });
+
+    // assign data-answer attribute to each h4 to collect answers
+    $("h4").each(function(){
+      $(this).attr("data-answer","");
+    });
+
+    $("#test-button").click(function(){
+
+      var userData = {};
+
+      $("input, textarea").each(function(){
+        var value = $(this).val();
+        if(value){
+          var element = $(this)[0].previousElementSibling;
+          if(element != null && $(element)[0].tagName =="H4"){
+            $(element).attr("data-answer", value);
+          }
+        }
+      });
+
+      $("h4").each(function(){
+        userData[$(this).text()] = $(this).attr("data-answer");
+      });
+
+      $(".inline").each(function(){
+        var title = $($(this)[0].previousElementSibling)[0].innerText;
+        var checkedElement = $(this).find("input:checked").parent().find("label");
+        userData[title] = $(checkedElement)[0].innerText;
+      });
+
+      $(".multiple-input-text-tags").each(function(){
+        var title = $($(this).parents("fieldset")[0].previousElementSibling)[0].innerText;
+        var tagsObj = [];
+        if($(this).css("display") != "none"){
+          for(var i of $(this).children()){
+            var fields = $(i).find(".field");
+            var obj = {};
+            for(var j of fields){
+
+              obj[$(j).find("h5").text()] = $(j).find("input").val();
+            }
+            tagsObj.push(obj);
+          }
+          userData[title] = tagsObj;
+        }
+      });
+
+
+      //fix radio and european 
+      $(".checkBoxArea-div").each(function(){
+        var title = $($(this).parent()[0].previousElementSibling)[0].innerText;
+        var tagsObj = [];
+        if($(this).css("display") != "none"){
+          for(var i of $(this).children()){
+            var fields = $(i).find(".field");
+            var obj = {};
+            for(var j of fields){
+
+              obj[$(j).find("h5").text()] = $(j).find("input").val();
+            }
+            tagsObj.push(obj);
+          }
+          userData[title] = tagsObj;
+        }
+        
+
+        $(this).children().find("input[type='checkbox']").each(function(){
+          if($(this).prop("checked")){
+            var parentTitle = $($(this).parents(".checkBoxArea")[0].previousElementSibling)[0].innerText;
+            userData[parentTitle] = {};
+          }
+        });
+
+
+        $(this).children().find("input[type='checkbox']").each(function(){
+
+          if($(this).prop("checked")){
+            var parentTitle = $($(this).parents(".checkBoxArea")[0].previousElementSibling)[0].innerText;
+            var tempObj = userData[parentTitle];
+            var title = $(this).parent().find("label")[0].innerText;
+            var childNodes = $(this).parent().children();
+            var currentValue;
+            for(var i of childNodes){
+              var tagName = $(i)[0].tagName;
+              switch(tagName){
+                case "SELECT":
+                  
+                  var selectVal = $(i)[0].value;
+                  if(selectVal!="other"){
+                    tempObj[title]=selectVal;
+                  }else{
+                    currentValue = {};
+                    for(var j of $($(i)[0].nextElementSibling).find("input")){
+                      currentValue[$(j)[0].placeholder] = $(j)[0].value;
+                    }
+                    tempObj[title] = currentValue;
+                  }
+                  break;
+                
+                case "TEXTAREA":
+                    tempObj[title] = $(i)[0].value;
+                    break;
+              
+                case "INPUT":
+                  if($(i)[0].value == "on" || $(i)[0].value == ""){
+                    tempObj[title] = "checked";
+                  }else{
+                    tempObj[title] = $(i)[0].value;
+                  }
+                  break;
+                }
+            }
+          }
+        });
+        
+      });
+
+      $(".multiple-dropdown").each(function(){
+        var parentTitle = $($(this)[0].previousElementSibling)[0].innerText;
+        var attributesList = [];
+        var anchorTags = $(this).children(".multiple").find("a");
+        for(var i of anchorTags){
+          attributesList.push($(i).attr("data-value"));
+        }
+
+        userData[parentTitle] = attributesList;
+      });
+
+      console.log(JSON.stringify(userData));
+
+    });
+
     $(".add-tag-button").on("click", function(){
       var input_elements = $(this).parent().find(".argument-area").children();
       if(checkElements(input_elements)){
@@ -126,7 +261,7 @@ $( document ).ready(function() {
     $(".main-title").click(function(){
       var element = $(this)[0].nextElementSibling;
       $(element).slideToggle();
-      console.log(element);
+    
     });
 });
 
@@ -143,8 +278,6 @@ function findQuestion(element){
   }else{
     json_file[indexIdIdentifier]["input-value"] = "No";
   }
-
-  console.log(json_file);
 }
 
 function displayElements(element, areaToDisplay){
@@ -267,4 +400,27 @@ function gatherInfo(input_elements){
     }
   }
   return temp;
+}
+
+
+// function print() {
+//   const filename  = 'ThisIsYourPDFFilename.pdf';
+
+//   html2canvas(document.querySelector('#nodeToRenderAsPDF')).then(canvas => {
+//     let pdf = new jsPDF('p', 'mm', 'a4');
+//     pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298);
+//     pdf.save(filename);
+//   });
+// }
+
+// Variant
+// This one lets you improve the PDF sharpness by scaling up the HTML node tree to render as an image before getting pasted on the PDF.
+function print(quality = 1) {
+  var doc = new jsPDF()
+  doc.text(20, 20, 'Hello world!')
+  doc.text(20, 30, 'This is client-side Javascript, pumping out a PDF.')
+  doc.addPage()
+  doc.text(20, 20, 'Do you like that?')
+  doc.output('save', 'filename.pdf')
+  return doc;
 }
