@@ -406,13 +406,48 @@ function print(quality = 1) {
   var doc = new jsPDF()
 
   var json = JSON.parse(JSON.stringify(userData));
+  var pageDown = 10;
+  doc.setFontSize(9);
   Object.keys(json).forEach(function(key) {
-    doc.text(20, 20, String(key));
+    console.log(pageDown);
+
+    if(pageDown%270==0){
+      doc.addPage();
+      pageDown=10;
+    }
+    var extraMarginBottom=0;
+    doc.text(20, pageDown+=5, String(key)+":");
+    if(Array.isArray(json[key])){
+      for(var i of json[key]){
+        if(typeof i === 'object'){
+          Object.keys(i).forEach(function(key) {
+            doc.text(25, pageDown+=5+(5*extraMarginBottom), String(key)+":");
+            doc.text(65, pageDown, String(i[key]));
+          });
+        }
+        doc.text(25, pageDown+=5, "");
+      }
+    }else if(typeof json[key] === 'object'){
+      var obj = json[key];
+      Object.keys(obj).forEach(function(key) {
+        doc.text(25, pageDown+=5+(5*extraMarginBottom), String(key)+":");
+        var splitTitle = doc.splitTextToSize(String(obj[key]), 125);
+        extraMarginBottom = splitTitle.length;
+        console.log("extraM:", extraMarginBottom);
+        doc.text(65, pageDown, splitTitle);
+      });
+    }else{
+      doc.text(25, pageDown+=5+(5*extraMarginBottom), String(json[key]));
+    }
+    
+    if(extraMarginBottom!=0){
+      extraMarginBottom = 0;
+    }
   });
   // doc.text(20, 20, 'Hello world!')
   // doc.text(20, 30, 'This is client-side Javascript, pumping out a PDF.')
   // doc.addPage()
   // doc.text(20, 20, 'Do you like that?')
-  doc.output('save', 'filename.pdf')
+  doc.output('save', String(json["Project Title"]) + '.pdf');
   return doc;
 }
