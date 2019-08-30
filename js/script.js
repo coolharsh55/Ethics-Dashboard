@@ -10,6 +10,7 @@ $( document ).ready(function() {
         json_file = json;
     });
 
+
     $('.ui.radio.checkbox').checkbox();
 
     $('.dropdown').dropdown();
@@ -22,6 +23,31 @@ $( document ).ready(function() {
 
     $("#pdf-button").click(function(){
       print();
+    });
+
+    // $("#import-button").click(function(){
+    //   $('.ui.modal').modal('show');
+    // });
+
+    $("#json-file-upload").click(function(){
+      var jsonUploaded;
+      $.getJSON("test.json").fail(function(){
+          alert("fail");
+      }).done(function(json) {
+        var h4Tags = $("h4");
+        var h4TagsObject = {};
+        for(var i of h4Tags){
+          h4TagsObject[$(i)[0].innerText] = i;
+        }
+        
+        $.each(json, function(index, value){
+          if(value != ""){
+            var nextElementTarget = $(h4TagsObject[index])[0].nextElementSibling;
+            insertValue(nextElementTarget, value);
+          }
+        });
+      });
+
     });
 
     // assign data-answer attribute to each h4 to collect answers
@@ -146,27 +172,13 @@ $( document ).ready(function() {
 
         userData[parentTitle] = attributesList;
       });
-
-      console.log(JSON.stringify(userData));
+      download(JSON.stringify(userData, 2, null), userData["Project Title"], 'application/json');
     });
 
     $(".add-tag-button").on("click", function(){
       var input_elements = $(this).parent().find(".argument-area").children();
       if(checkElements(input_elements)){
-        var name = $(input_elements[0]).find("input").val()
-        var tagArea = $(this).parent().find(".multiple-input-text-tags");
-        $(this).parent().find(".multiple-input-text-tags").css("display","flex");
-        tagArea.append(
-          $("<div />",{class:"box"}).append(gatherInfo(input_elements),
-            $("<i />",{class:"material-icons edit-test", text:"create"}),
-            $("<i />",{class:"material-icons delete-button", text:"clear"})
-          )
-        );
-        for(var i of tagArea.find("input")){
-          $(i).attr("disabled","");
-        }
-        $(this).parent().find(".errorMessage").css("display", "none");
-          
+        createInfoBox(this, input_elements, null);
       }else{
         if($(this).parent().find(".errorMessage").css("display") != "block"){
           $(this).parent().find(".errorMessage").slideToggle();
@@ -197,15 +209,7 @@ $( document ).ready(function() {
 
 
     $(".add-checkbox-option").on('click', function(){
-      if($(this).parent().find("input").val()!=""){
-        var value = $(this).parent().find("input").val();
-        var div_tag = $("<div />");
-        var input_checkbox = $("<input>", {type:"checkbox", id:value, name:value});
-        var label_tag = $("<label />",{'for':value,text:value});
-        var input_text = $("<input>", {type:"text",'class':"other-option",'placeholder':"Further Description",'style':"display:none"});
-        div_tag.append(input_checkbox,label_tag,input_text);
-        $(this).parent().parent().parent().find(".checkBoxArea-div").append(div_tag);
-      }
+      createCheckBox(this, null, null, null);
     });
 
 
@@ -238,7 +242,7 @@ $( document ).ready(function() {
     });
 
     $("body").on("click", ".edit-test", function(){
-      var elements = $(this).parent().parent().find("input");
+      var elements = $(this).parent().find("input");
       elements.removeAttr("disabled");
       for(var i of elements){
         $(i).css("border","1px solid grey");
@@ -260,6 +264,112 @@ $( document ).ready(function() {
     
     });
 });
+
+function createInfoBox(element, input_elements, obj){
+  var tagArea;
+  if(obj!=null){
+    var tagArea = $(element).find(".multiple-input-text-tags");
+    $(element).find(".multiple-input-text-tags").css("display","flex");
+    Object.keys(obj).forEach(function(key) {
+      tagArea.append(
+        $("<div />",{class:"box"}).append(gatherInfo(null, obj[key]),
+          $("<i />",{class:"material-icons edit-test", text:"create"}),
+          $("<i />",{class:"material-icons delete-button", text:"clear"})
+        )
+      );
+    });
+  }else{
+    tagArea = $(element).parent().find(".multiple-input-text-tags");
+    $(element).parent().find(".multiple-input-text-tags").css("display","flex");
+    tagArea.append(
+      $("<div />",{class:"box"}).append(gatherInfo(input_elements, null),
+        $("<i />",{class:"material-icons edit-test", text:"create"}),
+        $("<i />",{class:"material-icons delete-button", text:"clear"})
+      )
+    );
+  }
+
+  for(var i of tagArea.find("input")){
+    $(i).attr("disabled","");
+  }
+  $(element).parent().find(".errorMessage").css("display", "none");
+}
+
+function insertValue(nextElementTarget, value){
+  if($(nextElementTarget)[0].tagName=="DIV"){
+    if($(nextElementTarget)[0].classList.value=="checkBoxArea"){
+      // console.log($(nextElementTarget), value);
+      var checkboxObject = {};
+      var allCheckboxes = $(nextElementTarget).find("input[type='checkbox']");
+      Object.keys(allCheckboxes).forEach(function(key) {
+        checkboxObject[String($(allCheckboxes[key])[0].name).toLowerCase()] = $(allCheckboxes[key]);
+      });
+      Object.keys(value).forEach(function(key) {
+        if(key.toLowerCase() in checkboxObject){
+          checkboxObject[key.toLowerCase()].prop("checked",true);
+          if(checkboxObject[key.toLowerCase()].parent().children("textarea").length){
+            var checkboxTextArea = $(checkboxObject[key.toLowerCase()].parent().children("textarea"));
+            checkboxTextArea.val(value[key]);
+            checkboxTextArea.css("display","block");
+          }else if(typeof value[key]==="object"){
+            console.log(value[key]);
+            var checkboxSelectArea = $(checkboxObject[key.toLowerCase()].parent().children("select"));
+            checkboxSelectArea.val("other");
+            checkboxSelectArea.css("display","inherit");
+            var inputChildren = checkboxObject[key.toLowerCase()].parent().find(".age-range").children("input");
+            for(var i of inputChildren){
+              $(i).css("display", "block");
+            }
+          }else{
+            var checkboxInputArea = $(checkboxObject[key.toLowerCase()].parent().children("input"));
+            checkboxInputArea.val(value[key]);
+            checkboxInputArea.css("display","inherit");
+          }
+
+        }else{
+          createCheckBox(null, value, key, nextElementTarget);
+        }
+      });
+    }else if($(nextElementTarget)[0].classList.value=="inline fields"){
+      for(var i of $(nextElementTarget).find("label")){
+        if($(i)[0].innerText == value){
+          $(i).parent().find("input").prop("checked",true);
+        }
+      }
+    }else{
+    }
+  }else if($(nextElementTarget)[0].tagName=="FIELDSET"){
+    createInfoBox($(nextElementTarget), null, value);
+  }else{
+    $(nextElementTarget).val(value);
+  }
+}
+
+function createCheckBox(element, obj, key, nextElementTarget){
+  var checkboxValue, placeholder="Further Description", div_tag, input_checkbox, label_tag, input_text;
+  if(element!=null){
+    if($(element).parent().find("input").val()!=""){
+      checkboxValue = $(element).parent().find("input").val();
+      $(element).parent().parent().parent().find(".checkBoxArea-div").append(div_tag);
+    }
+  }else{
+    checkboxValue = key.toLowerCase();
+    placeholder = obj[checkboxValue];
+  }
+  var div_tag = $("<div />");
+  var input_checkbox = $("<input>", {type:"checkbox", id:checkboxValue, name:checkboxValue, checked:true});
+  var label_tag = $("<label />",{'for':checkboxValue,text:checkboxValue});
+  var input_text = $("<input>", {type:"text",'class':"other-option",'placeholder':placeholder,'style':"display:block"});
+  div_tag.append(input_checkbox,label_tag,input_text);
+  if(element!=null){
+    if($(element).parent().find("input").val()!=""){
+      checkboxValue = $(this).parent().find("input").val();
+      $(element).parent().parent().parent().find(".checkBoxArea-div").append(div_tag);
+    }
+  }else{
+    $(nextElementTarget).find(".checkBoxArea-div").append(div_tag);
+  }
+}
 
 function findQuestion(element){
   var questionElement;
@@ -333,65 +443,78 @@ function determineOkayInput(input_found, select_found, inputObj, selectObj){
   }  
 }
 
-function gatherInfo(input_elements){
+function gatherInfo(input_elements, obj){
   var temp = [];
-  for(var i of input_elements){
-    var title = $(i).find("label").text();
-    var value;
-    if($(i).find("input")[0].type=="checkbox"){
-      if($(i).find("input")[0].checked==true){
+  if(obj!=null){
+      Object.keys(obj).forEach(function(key) {
         temp.push(
           $("<div />", {class:"field"}).append(
             $("<div />").append(
-              $("<h5 />",{text:title}),
-              $("<input />", {'type':'text','value':'Yes'})
+              $("<h5 />",{text:key}),
+              $("<input />", {'type':'text','value':obj[key]})
             )
           )
         );
+      });
+  }else{
+    for(var i of input_elements){
+      var title = $(i).find("label").text();
+      var value;
+      if($(i).find("input")[0].type=="checkbox"){
+        if($(i).find("input")[0].checked==true){
+          temp.push(
+            $("<div />", {class:"field"}).append(
+              $("<div />").append(
+                $("<h5 />",{text:title}),
+                $("<input />", {'type':'text','value':'Yes'})
+              )
+            )
+          );
+        }else{
+          temp.push(
+            $("<div />", {class:"field"}).append(
+              $("<div />").append(
+                $("<h5 />",{text:title}),
+                $("<input />", {'type':'text','value':'No'})
+              )
+            )
+          );
+        }
       }else{
-        temp.push(
-          $("<div />", {class:"field"}).append(
-            $("<div />").append(
-              $("<h5 />",{text:title}),
-              $("<input />", {'type':'text','value':'No'})
+        if($(i).find("input").val()!=""){
+          value = $(i).find("input").val();
+          temp.push(
+            $("<div />", {class:"field"}).append(
+              $("<div />").append(
+                $("<h5 />",{text:title}),
+                $("<input />", {'type':'text','value':value})
+              )
             )
-          )
-        );
-      }
-    }else{
-      if($(i).find("input").val()!=""){
-        value = $(i).find("input").val();
-        temp.push(
-          $("<div />", {class:"field"}).append(
-            $("<div />").append(
-              $("<h5 />",{text:title}),
-              $("<input />", {'type':'text','value':value})
+          );
+          $(i).find("input").val("");
+        }else if($(i).find("select").val()=="other"){
+          value = $(i).find("input").val();
+          temp.push(
+            $("<div />", {class:"field"}).append(
+              $("<div />").append(
+                $("<h5 />",{text:title}),
+                $("<input />", {'type':'text','value':value})
+              )
             )
-          )
-        );
-        $(i).find("input").val("");
-      }else if($(i).find("select").val()=="other"){
-        value = $(i).find("input").val();
-        temp.push(
-          $("<div />", {class:"field"}).append(
-            $("<div />").append(
-              $("<h5 />",{text:title}),
-              $("<input />", {'type':'text','value':value})
+          );
+          $(i).find("input").val("");
+        }else{
+          value = $(i).find("select").val();
+          temp.push(
+            $("<div />", {class:"field"}).append(
+              $("<div />").append(
+                $("<h5 />",{text:title}),
+                $("<input />", {'type':'text','value':value})
+              )
             )
-          )
-        );
-        $(i).find("input").val("");
-      }else{
-        value = $(i).find("select").val();
-        temp.push(
-          $("<div />", {class:"field"}).append(
-            $("<div />").append(
-              $("<h5 />",{text:title}),
-              $("<input />", {'type':'text','value':value})
-            )
-          )
-        );
-        
+          );
+          
+        }
       }
     }
   }
@@ -435,14 +558,12 @@ function print(quality = 1) {
         extraMarginBottom = splitTitle.length;
         console.log("extraM:", extraMarginBottom);
         doc.text(65, pageDown, splitTitle);
+
       });
     }else{
       doc.text(25, pageDown+=5+(5*extraMarginBottom), String(json[key]));
     }
     
-    if(extraMarginBottom!=0){
-      extraMarginBottom = 0;
-    }
   });
   // doc.text(20, 20, 'Hello world!')
   // doc.text(20, 30, 'This is client-side Javascript, pumping out a PDF.')
@@ -450,4 +571,22 @@ function print(quality = 1) {
   // doc.text(20, 20, 'Do you like that?')
   doc.output('save', String(json["Project Title"]) + '.pdf');
   return doc;
+}
+
+function download(data, filename, type) {
+  var file = new Blob([data], {type: type});
+  if (window.navigator.msSaveOrOpenBlob) // IE10+
+      window.navigator.msSaveOrOpenBlob(file, filename);
+  else { // Others
+      var a = document.createElement("a"),
+      url = URL.createObjectURL(file);
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function() {
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url);  
+      }, 0); 
+  }
 }

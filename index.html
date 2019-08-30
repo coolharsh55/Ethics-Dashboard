@@ -153,8 +153,8 @@
                                 </div>
                             </div>
                             <div>
-                                <input type="checkbox" id="gender" name="gender">
-                                <label for="gender">Sex/Gender</label>
+                                <input type="checkbox" id="sex/gender" name="sex/gender">
+                                <label for="sex/gender">Sex/Gender</label>
                                 <textarea placeholder="Further Description" style="display:none"></textarea>
                             </div>
                             <div>
@@ -168,8 +168,8 @@
                                 <input type="text" class="other-option" placeholder="Further Description" style="display:none">
                             </div>
                             <div>
-                                <input type="checkbox" id="prior-knowledge" name="prior-knowledge">
-                                <label for="prior-knowledge">Prior Knowledge</label>
+                                <input type="checkbox" id="prior knowledge" name="prior knowledge">
+                                <label for="prior knowledge">Prior Knowledge</label>
                                 <input type="text" class="other-option" placeholder="Further Description" style="display:none">
                             </div>
                         </div>
@@ -216,8 +216,8 @@
                                 <input type="text" class="other-option" placeholder="Further Description" style="display:none">
                             </div>
                             <div>
-                                <input type="checkbox" id="prior-knowledge" name="prior-knowledge">
-                                <label for="prior-knowledge">Prior Knowledge</label>
+                                <input type="checkbox" id="prior knowledge" name="prior knowledge">
+                                <label for="prior knowledge">Prior Knowledge</label>
                                 <input type="text" class="other-option" placeholder="Further Description" style="display:none">
                             </div>
                         </div>
@@ -446,16 +446,16 @@
                     <div class="checkBoxArea">
                         <div class="checkBoxArea-div">
                             <div>
-                                <input type="checkbox" id="online-admin" name="online-admin">
-                                <label for="online-admin">Online</label>
+                                <input type="checkbox" id="online" name="online">
+                                <label for="online">Online</label>
                             </div>
                             <div>
-                                <input type="checkbox" id="paper-admin" name="paper-admin">
-                                <label for="paper-admin">Paper</label>
+                                <input type="checkbox" id="paper" name="paper">
+                                <label for="paper">Paper</label>
                             </div>
                             <div>
-                                <input type="checkbox" id="email-admin" name="email-admin">
-                                <label for="email-admin">Email</label>
+                                <input type="checkbox" id="email" name="email">
+                                <label for="email">Email</label>
                             </div>
                             <div>
                                 <input type="checkbox" id="verbally" name="verbally">
@@ -473,7 +473,7 @@
                     <div class="checkBoxArea">
                         <div class="checkBoxArea-div">
                             <div>
-                                <input type="checkbox" id="google-forms" name="google-forms">
+                                <input type="checkbox" id="google-forms" name="google forms">
                                 <label for="google-forms">Google Forms</label>
                             </div>
                             <div>
@@ -537,18 +537,18 @@
                     <div class="checkBoxArea">
                         <div class="checkBoxArea-div">
                             <div>
-                                <input type="checkbox" id="e" name="e">
-                                <label for="e">Encryption</label>
+                                <input type="checkbox" id="Encryption" name="Encryption">
+                                <label for="Encryption">Encryption</label>
                                 <input type="text" class="other-option" placeholder="Further Description" style="display:none">
                             </div>
                             <div>
-                                <input type="checkbox" id="ac" name="ac">
-                                <label for="ac">Access Control, e.g. device lock, PIN, password</label>
+                                <input type="checkbox" id="Access Control, e.g. device lock, PIN, password" name="Access Control, e.g. device lock, PIN, password">
+                                <label for="Access Control, e.g. device lock, PIN, password">Access Control, e.g. device lock, PIN, password</label>
                                 <input type="text" class="other-option" placeholder="Further Description" style="display:none">
                             </div>
                             <div>
-                                <input type="checkbox" id="pac" name="pac">
-                                <label for="pac">Physical Access Control, e.g. locks, access cards</label>
+                                <input type="checkbox" id="Physical Access Control, e.g. locks, access cards" name="Physical Access Control, e.g. locks, access cards">
+                                <label for="Physical Access Control, e.g. locks, access cards">Physical Access Control, e.g. locks, access cards</label>
                                 <input type="text" class="other-option" placeholder="Further Description" style="display:none">
                             </div>
                         </div>
@@ -563,8 +563,8 @@
                     <div class="checkBoxArea">
                         <div class="checkBoxArea-div">
                             <div>
-                                <input type="checkbox" id="eu" name="eu">
-                                <label for="eu">European Union</label>
+                                <input type="checkbox" id="European Union" name="European Union">
+                                <label for="European Union">European Union</label>
                             </div>
                         </div>
                         <div class='field'>
@@ -704,6 +704,33 @@
                 <button type="button" id="checklist-button">checklist items</button>
                 <button type="button" id="pdf-button">pdf</button>
                 <button type="button" id="test-button">Generate JSON</button>
+                <button type="button" id="json-file-upload">Upload JSON</button>
+
+
+                <div class="ui modal">
+                    <i class="close icon"></i>
+                    <div class="header">
+                        Upload JSON
+                    </div>
+                    <form>
+                        <div class="image content">
+                            
+                            <div class="description">
+                                <div class="ui header">Submit path to file</div>
+                                <div class="ui left corner labeled input">
+                                    <input type="text" id="uploaded-file" placeholder="File Path...">
+                                    <div class="ui left corner label">
+                                        <i class="file outline icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <div class="ui black deny button">Cancel</div>
+                            <button class="ui positive right labeled icon button" type="submit" id="json-file-upload">Upload<i class="checkmark icon"></i></button>
+                        </div>
+                    </form>
+                </div>
 
             </form>
         
