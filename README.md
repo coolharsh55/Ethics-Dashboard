@@ -26,7 +26,7 @@
 
 <h4>Example of a checkbox Area component</h4>
 <p>H4 tag contains the title, also contains a field to allow the user to add more Criteria</p>
-'''html5
+'''HTML
 <h4>Recruitment Method/Medium</h4>
 <div class="checkBoxArea">
     <div class="checkBoxArea-div">
