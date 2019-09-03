@@ -298,7 +298,6 @@ function createInfoBox(element, input_elements, obj){
 function insertValue(nextElementTarget, value){
   if($(nextElementTarget)[0].tagName=="DIV"){
     if($(nextElementTarget)[0].classList.value=="checkBoxArea"){
-      // console.log($(nextElementTarget), value);
       var checkboxObject = {};
       var allCheckboxes = $(nextElementTarget).find("input[type='checkbox']");
       Object.keys(allCheckboxes).forEach(function(key) {
@@ -311,21 +310,29 @@ function insertValue(nextElementTarget, value){
             var checkboxTextArea = $(checkboxObject[key.toLowerCase()].parent().children("textarea"));
             checkboxTextArea.val(value[key]);
             checkboxTextArea.css("display","block");
-          }else if(typeof value[key]==="object"){
-            console.log(value[key]);
+          }else if(typeof value[key]==="object" || checkboxObject[key.toLowerCase()].parent().children("select").length){
+            var dic = value[key];
             var checkboxSelectArea = $(checkboxObject[key.toLowerCase()].parent().children("select"));
+           if(typeof value[key] !== 'object'){
+            checkboxSelectArea.val(value[key]);
+           }else{
             checkboxSelectArea.val("other");
-            checkboxSelectArea.css("display","inherit");
             var inputChildren = checkboxObject[key.toLowerCase()].parent().find(".age-range").children("input");
             for(var i of inputChildren){
               $(i).css("display", "block");
+              if($(i).attr("placeholder")=="Max"){
+                $(i).val(dic["Max"]);
+              }else{
+                $(i).val(dic["Min"]);
+              }
             }
+           }
+           checkboxSelectArea.css("display","inherit");
           }else{
             var checkboxInputArea = $(checkboxObject[key.toLowerCase()].parent().children("input"));
             checkboxInputArea.val(value[key]);
             checkboxInputArea.css("display","inherit");
           }
-
         }else{
           createCheckBox(null, value, key, nextElementTarget);
         }
@@ -337,6 +344,49 @@ function insertValue(nextElementTarget, value){
         }
       }
     }else{
+      //multiple dropwdon area
+     
+      var selectArea = $(nextElementTarget).find("select");
+      var options = $(selectArea).find("option");
+      var attributeMapping = {};
+
+      // console.log($(selectArea).parent().find(".menu"));
+      for(var i of options){
+        attributeMapping[$(i)[0].value] = $(i);
+      }
+      // console.log(attributeMapping);
+      for(var i of value){
+        // console.log("value:",i);
+        if(i in attributeMapping){
+          // console.log(attributeMapping[i]);
+        }else{
+          var userChoice = $("<option/>" ,{value:i, text:i});
+          $(selectArea).append(userChoice);
+          // $(userChoice).click();
+          // $(selectArea).parent().parent().find("input[type='text']").val(i);
+          // $(selectArea).parent().parent().find("button").click();
+        }
+        // for(var j of $(selectArea).parent().parent().find(".item")){
+        //   if($(j)[0].text == i){
+        //     $(j).css("background-color","red");
+        //   }
+        // }
+      }
+
+      for(var j of $(selectArea).parent().find(".menu")){
+        // if($(j)[0].text == i){
+        //   $(j).css("background-color","red");
+        // }
+        //$(j).click();
+        console.log($($(j)[0].children).length);
+        for(var x of $(j)[0].children){
+          console.log(x);
+          $(x).click();
+        }
+      }
+      // console.log($(selectArea).parent().parent().find(".item"));
+
+      // console.log(" ");
     }
   }else if($(nextElementTarget)[0].tagName=="FIELDSET"){
     createInfoBox($(nextElementTarget), null, value);
