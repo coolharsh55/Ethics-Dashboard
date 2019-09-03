@@ -26,35 +26,9 @@
 
 <h4>Example of a checkbox Area component</h4>
 <p>H4 tag contains the title, also contains a field to allow the user to add more Criteria</p>
-<code>
-    <h4>Conflicts of Interest</h4>
-    <div class="checkBoxArea">
-        <div class="checkBoxArea-div">
-            <div>
-                <input type="checkbox" id="colleagues" name="colleagues">
-                <label for="colleagues">Colleagues</label>
-            </div>
-            <div>
-                <input type="checkbox" id="students" name="students">
-                <label for="students">Students</label>
-            </div>
-            <div>
-                <input type="checkbox" id="friends" name="friends">
-                <label for="friends">Friends</label>
-            </div>
-            <div>
-                <input type="checkbox" id="relatives" name="relatives">
-                <label for="relatives">Relatives</label>
-            </div>
-        </div>
-        <div class='field'>
-            <div>
-                <input type='text' placeholder="Other option">
-                <button class="add-checkbox-option" type="button">Add Criteria</button>
-            </div>
-        </div>
-    </div>
-</code>
+<img src="images/checkboxCodeExample.png"/>
+<h5>Outputted component</h5>
+<img src="images/checkboxComponentExample.png"/>
 
 <h4>Example of a number input</h4>
 <p>H4 tag contains the title and a normal input of type number, the number is also tested to be positive</p>
