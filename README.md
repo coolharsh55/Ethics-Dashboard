@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h2>Form to make ethics apllications easier</h2>
 <h2>The form contains 8 components, which can be used to build certain areas of the form application</h2>
 <h3>This projects uses <a href="https://semantic-ui.com/">semantic ui</a> for easy design</h3>
@@ -18,3 +19,6 @@
     <li>JSON generation</li>
     <li>continuation of partially filled in application </li>
 </ul>
+=======
+<a href="https://masons40.github.io/Ethics-Dashboard/">Demo Website</a>
+>>>>>>> e16340ad73d45f55de8ba6bb476dc9a650222e3d
