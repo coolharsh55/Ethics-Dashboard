@@ -26,35 +26,37 @@
 
 <h4>Example of a checkbox Area component</h4>
 <p>H4 tag contains the title, also contains a field to allow the user to add more Criteria</p>
-```html
-<h4>Recruitment Method/Medium</h4>
-<div class="checkBoxArea">
-    <div class="checkBoxArea-div">
-        <div>
-            <input type="checkbox" id="online" name="online">
-            <label for="online">Online</label>
+<pre>
+    <code>
+        <h4>Recruitment Method/Medium</h4>
+        <div class="checkBoxArea">
+            <div class="checkBoxArea-div">
+                <div>
+                    <input type="checkbox" id="online" name="online">
+                    <label for="online">Online</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="in-person" name="in-person">
+                    <label for="in-person">In-person</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="email" name="email">
+                    <label for="email">Email</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="class/event" name="class/event">
+                    <label for="class/event">Class/Event</label>
+                </div>
+            </div>
+            <div class='field'>
+                <div>
+                    <input type='text' placeholder="Other option">
+                    <button class="add-checkbox-option" type="button">Add Criteria</button>
+                </div>
+            </div>
         </div>
-        <div>
-            <input type="checkbox" id="in-person" name="in-person">
-            <label for="in-person">In-person</label>
-        </div>
-        <div>
-            <input type="checkbox" id="email" name="email">
-            <label for="email">Email</label>
-        </div>
-        <div>
-            <input type="checkbox" id="class/event" name="class/event">
-            <label for="class/event">Class/Event</label>
-        </div>
-    </div>
-    <div class='field'>
-        <div>
-            <input type='text' placeholder="Other option">
-            <button class="add-checkbox-option" type="button">Add Criteria</button>
-        </div>
-    </div>
-</div>
-```
+    </code>
+</pre>
 <!--<img style="width:70%" src="images/checkboxCodeExample.png"/>-->
 <h5>Outputted component</h5>
 <img src="images/checkboxComponentExample.png"/>
