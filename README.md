@@ -17,7 +17,7 @@
 <ul>
     <li>PDF document generation</li>
     <li>JSON generation</li>
-    <li>continuation of partially filled in application </li>
+    <li>Continuation of partially filled in application </li>
 </ul>
 <a href="https://masons40.github.io/Ethics-Dashboard/">Demo Website</a>
 
@@ -26,7 +26,36 @@
 
 <h4>Example of a checkbox Area component</h4>
 <p>H4 tag contains the title, also contains a field to allow the user to add more Criteria</p>
-<img style="width:70%" src="images/checkboxCodeExample.png"/>
+'''html5
+<h4>Recruitment Method/Medium</h4>
+<div class="checkBoxArea">
+    <div class="checkBoxArea-div">
+        <div>
+            <input type="checkbox" id="online" name="online">
+            <label for="online">Online</label>
+        </div>
+        <div>
+            <input type="checkbox" id="in-person" name="in-person">
+            <label for="in-person">In-person</label>
+        </div>
+        <div>
+            <input type="checkbox" id="email" name="email">
+            <label for="email">Email</label>
+        </div>
+        <div>
+            <input type="checkbox" id="class/event" name="class/event">
+            <label for="class/event">Class/Event</label>
+        </div>
+    </div>
+    <div class='field'>
+        <div>
+            <input type='text' placeholder="Other option">
+            <button class="add-checkbox-option" type="button">Add Criteria</button>
+        </div>
+    </div>
+</div>
+'''
+<!--<img style="width:70%" src="images/checkboxCodeExample.png"/>-->
 <h5>Outputted component</h5>
 <img src="images/checkboxComponentExample.png"/>
 
@@ -36,5 +65,5 @@
 <h5>Outputted component</h5>
 <img src="images/radioComponentExample.png"/>
 
-<p>some components have field areas where uses can add as many option as they want( example area: group of multiple input fields)</p>
+<p>some components have field areas where usesrs can add as many options as they want( example area: group of multiple input fields)</p>
 <p>A form can be made up of any mixture of components and a simple button to generate the json will be added</p>

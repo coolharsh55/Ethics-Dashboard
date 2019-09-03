@@ -299,4 +299,13 @@ body #formV2 .multiple-input-text-tags .box .field div h5 {
 body #formV2 .multiple-input-text-tags .box .field div input[type="text"]:disabled {
   background-color: white;
 }
+
+.bottom-button {
+  width: 10%;
+  padding: 7px 9px;
+  background-color: #3994c9;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
 /*# sourceMappingURL=style.css.map */
