@@ -26,13 +26,12 @@
 
 <h4>Example of a checkbox Area component</h4>
 <p>H4 tag contains the title, also contains a field to allow the user to add more Criteria</p>
-<img src="images/checkboxCodeExample.png"/>
+<img style="width:70%" src="images/checkboxCodeExample.png"/>
 <h5>Outputted component</h5>
 <img src="images/checkboxComponentExample.png"/>
 
-<h4>Example of a number input</h4>
-<p>H4 tag contains the title and a normal input of type number, the number is also tested to be positive</p>
-<code>
-    <h4>Expected total Number</h4>
-    <input type='number' style="border:1px solid">
-</code>
+<h4>Example of a radio Area component</h4>
+<p>H4 tag contains the title, the No option is automatically checked</p>
+<img style="width:70%" src="images/radioCodeExample.png"/>
+<h5>Outputted component</h5>
+<img src="images/radioComponentExample.png"/>
