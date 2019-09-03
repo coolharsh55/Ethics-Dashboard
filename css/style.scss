@@ -284,3 +284,10 @@ body{
     border-radius: 5px;
     cursor: pointer;
 }
+
+
+@media only screen and (min-width: 768px) {
+    #formV2{
+        width:90%;
+    }
+} 
