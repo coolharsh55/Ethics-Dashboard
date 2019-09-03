@@ -35,3 +35,6 @@
 <img style="width:70%" src="images/radioCodeExample.png"/>
 <h5>Outputted component</h5>
 <img src="images/radioComponentExample.png"/>
+
+<p>some components have field areas where uses can add as many option as they want( example area: group of multiple input fields)</p>
+<p>A form can be made up of any mixture of components and a simple button to generate the json will be added</p>
