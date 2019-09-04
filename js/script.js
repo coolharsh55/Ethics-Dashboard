@@ -383,17 +383,16 @@ function insertValue(nextElementTarget, value){
       //multiple dropwdon area
      
       var selectArea = $(nextElementTarget).find("select");
-      var options = $(selectArea).find("option");
       var currentValues = [];
       var menuArea = $(selectArea).parent().find(".menu");
-      // console.log("values", value);
-      // console.log("options", options);
 
+
+      //get all default values in the multi dropwdown 
       for(var i of $(menuArea)[0].children){
         currentValues.push($(i).attr("data-value"));
       }
-      // console.log(currentValues);
 
+      //find all the values that are not defaults, and add them to the dropdown
       for(var i of value){
         if(!(currentValues.includes(i))){
           $(menuArea).append(
@@ -402,57 +401,14 @@ function insertValue(nextElementTarget, value){
         }
       }
 
-      // console.log("menu:", $(selectArea).parent().find(".menu"));
-      // <div class="item" data-value="SUS">SUS</div>
-
+      //select all the user values 
       for(var j of menuArea){
-        // // $(j).click();
-        // console.log("test:", j);
         for(var x of $(j)[0].children){
-          console.log("item", $(x));
           if(value.includes($(x).attr("data-value"))){
             $(x).click();
           }
         }
       }
-
-      // console.log($(selectArea).parent().find(".menu"));
-      // for(var i of options){
-      //   attributeMapping[$(i)[0].value] = $(i);
-      // }
-      // console.log(attributeMapping);
-      // for(var i of value){
-      //   console.log("value:",i);
-      //   if(i in attributeMapping){
-      //     console.log(attributeMapping[i]);
-      //   }else{
-      //     var userChoice = $("<option/>" ,{value:i, text:i});
-      //     $(selectArea).append(userChoice);
-      //     $(userChoice).click();
-      //     $(selectArea).parent().parent().find("input[type='text']").val(i);
-      //     $(selectArea).parent().parent().find("button").click();
-      //   }
-      //   for(var j of $(selectArea).parent().parent().find(".item")){
-      //     if($(j)[0].text == i){
-      //       $(j).css("background-color","red");
-      //     }
-      //   }
-      // }
-
-      // for(var j of $(selectArea).parent().find(".menu")){
-      //   if($(j)[0].text == i){
-      //     $(j).css("background-color","red");
-      //   }
-      //   $(j).click();
-      //   console.log($($(j)[0].children).length);
-      //   for(var x of $(j)[0].children){
-      //     console.log(x);
-      //     $(x).click();
-      //   }
-      // }
-      // console.log($(selectArea).parent().parent().find(".item"));
-
-      // console.log(" ");
     }
   }else if($(nextElementTarget)[0].tagName=="FIELDSET"){
     createInfoBox($(nextElementTarget), null, value);
